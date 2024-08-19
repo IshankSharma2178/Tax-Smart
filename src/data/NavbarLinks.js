@@ -16,8 +16,8 @@ export const NavbarLinks = [
       path: "/Tax-calculator",
     },
     {
-      title: "Contact",
-      path:"/contact" 
+      title: "About",
+      path:"/about" 
     }
   ];
   

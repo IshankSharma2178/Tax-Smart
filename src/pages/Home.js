@@ -3,13 +3,18 @@ import heroImg from "../assets/img/illustration/8.png"
 import banner from "../assets/img/shape/banner.jpg";
 import arrow from "../assets/img/shape/17.png";
 import { FaArrowRight } from "react-icons/fa";
+import IconButton from '../component/common/IconButton';
 import cloudsIcon from "../assets/img/icon/5.png"
 import greenDots from "../assets/img/shape/6.png"
 import { NavbarLinks } from '../data/NavbarLinks';
-import { NavLink } from 'react-router-dom';
-import clouds from "../assets/img/illustration/cloud.png"
- 
+import { NavLink, useNavigate } from 'react-router-dom';
+import clouds from "../assets/img/illustration/CLouds1.png"
+import logo from "../assets/img/logo.png"
+
 function Home() {
+
+  const navigate = useNavigate();
+
   return (
     <div className='overflow-x-hidden '>
 
@@ -18,21 +23,23 @@ function Home() {
         className="bg-cover bg-no-repeat bg-center   pb-[100px] mx-auto relative"
         style={{ backgroundImage: `url(${banner})` }}
       >
-        <div className="max-w-[1260px] w-11/12 mx-auto flex flex-col items-center   justify-center">
-
-            {/* Header */}
-            <div className='flex flex-row py-10 w-full m-auto items-center justify-between'>
-                <div>
-                    logo
+        <div className=" mx-auto flex flex-col items-center  justify-center">
+          
+          {/* Header */}
+          <div className=' max-w-[1260px] w-[95%] flex flex-row mt-8 justify-center items-center h-fit z-50'>
+            {/* logo */}
+            <div className='flex flex-row w-full m-auto items-center justify-between'>
+                <div className='w-[230px]  hover:cursor-pointer h-12'>
+                    <img src={logo}/>
                 </div>
 
             {/* navbar-links */}
                 <div>
-                    <div className='flex flex-row gap-10 ml-8'>
+                    <div className='flex flex-row gap-6 ml-8'>
                     {NavbarLinks.map((links, key) => (
-                        <div>
+                        <div key={key}>
                         <NavLink to={links.path}>
-                            <div>
+                            <div className='cursor-pointer text-xl font-medium'>
                             {links.title}
                             </div>
                         </NavLink>
@@ -40,10 +47,15 @@ function Home() {
                     ))}
                     </div>
                 </div>
+
             {/* Authentication Buttons */}
                 <div className='flex flex-row gap-10 mr-4'>
-                    <NavLink to="/sign-up">
-                        <div>Sign Up</div>
+                    <NavLink to="/sign-up" className="">
+                    <button class="gradient-border-button px-4 py-2 rounded-xl">
+                      Sign up
+                    </button>
+
+
                     </NavLink>
                     <NavLink to="/login">
                         <div>Login</div>
@@ -51,43 +63,41 @@ function Home() {
                 </div>
             </div>
 
+          </div>
+            
             {/* Hero Section */}
-          <div className="flex flex-wrap justify-between mx-auto pt-[70px]">
-            <div className="w-full lg:w-[50%] mt-1 relative">
+          <div className="flex flex-wrap justify-between relative mx-auto pt-[70px] max-w-[1260px] w-11/12">
+            <div className="w-full lg:w-[50%] mt-1 ">
               <div className="pr-8">
                 <h2 className="text-4xl flex flex-row  roboto-thin text-[70px] font-bold leading-tight mb-10">
-                  <p className='text-blue-950'>#</p>Level Up Your  Financial Rizz 
+                  <p className='text-[#00003f]'>Level Up Your Financial Rizz </p>
                 </h2>
                 <p className="mt-4 text-lg text-gray-500 leading-[30px] tracking-wide">
-                    A beginner guide to Indian taxation system ,three structured progression and interactive learning
+                    A beginner guide to Indian taxation system, three structured progression and interactive learning
                 </p>
-                <div className="mt-8">
-                  <a className=" bg-gradient-to-r from-[#0c5adb] to-[#3f1399] after:bg-gradient-to-r after:from-[#0c5adb] after:to-[#3f1399] text-white py-4 px-10 rounded-lg hover:cursor-pointer shadow-2xl text-xl transform hover:scale-105 transition duration-300 ease-in-out flex flex-row items-center w-fit gap-2 justify-center">
-                    <p>Explore Now</p> 
-                    <FaArrowRight />
+                <div className="mt-8 z-20 relative">
+                  <a>
+                  <IconButton icon="FaArrowRight" text="Explore Now" onClick={()=>navigate("/signup")}/> 
                   </a>
                 </div>
               </div>
-              <div className='absolute -top-10 -translate-y-2'>
-  <img src={clouds} className='border-image' />
-</div>
-
-
             </div>
 
-            <div className="max-w-[50%] mt-12 lg:mt-0 relative ">
+            {/* Cloud Image */}
+            <div className='absolute -top-16 -translate-y-[10%] w-[70%] z-10 -translate-x-16'>
+              <img src={clouds} className='border-image opacity-60' />
+            </div>
+
+            <div className="max-w-[50%] mt-12 lg:mt-0 relative z-0">
               <div className="flex flex-wrap space-x-4 animate-bounce1"> 
                 <img className=" " src={heroImg} alt="Thumb 3" />
               </div>
-              {/* <div className='absolute top-0 w-[500px]'>
-                <img src={greenDots}/>
-              </div> */}
             </div>
           </div>
         </div>
 
-        {/* Clouds Image */}
-        <div className='absolute bottom-0 w-screen w-full'>
+        {/* Clouds Icon */}
+        <div className='absolute bottom-0 w-screen w-full z-0'>
             <img  src={cloudsIcon} />
         </div>
 
@@ -95,5 +105,6 @@ function Home() {
     </div>
   );
 }
+
 
 export default Home;

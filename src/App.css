@@ -71,3 +71,16 @@
 .border-image {
   animation: moveX 23s ease-in-out infinite;
 }
+
+/* Custom CSS for the button with gradient border */
+.gradient-border-button {
+  background-color: transparent; /* Transparent background */
+  border: 2px solid transparent; /* Start with a transparent border */
+  border-image: linear-gradient(90deg, #03a9f4, #f441a5) 1; /* Gradient border */
+  background-origin: border-box; /* Set the background-origin to border-box */
+  background-clip: padding-box, border-box; /* Clip the background to the border-box */
+  box-shadow: 0px 0px 0px 2px transparent; /* Initial box-shadow to keep the same size */
+  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transition */
+  border-radius: 100px;
+}
+
