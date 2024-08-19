@@ -31,3 +31,43 @@
   body {
     overflow-x: hidden;
   }
+  @keyframes bounce1 {
+    0%, 100% {
+        transform: translateY(0);
+        animation-timing-function: ease-in-out;
+    }
+    50% {
+        transform: translateY(-2%);
+        animation-timing-function: ease-in-out;
+    }
+}
+
+.animate-bounce1 {
+    animation: bounce1 2s infinite;
+}
+
+.shadow-image {
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5)); 
+}
+
+
+@keyframes moveX {
+  0% {
+    transform: translateX(-100px) translateY(0);
+  }
+  25% {
+    transform: translateX(-100px) translateY(20px);
+  }
+  50% {
+    transform: translateX(100px) translateY(20px);
+  }
+  75% {
+    transform: translateX(100px) translateY(0);
+  }
+  100% {
+    transform: translateX(-100px) translateY(0);
+  }
+}
+.border-image {
+  animation: moveX 23s ease-in-out infinite;
+}
