@@ -39,7 +39,7 @@ function Home() {
                     {NavbarLinks.map((links, key) => (
                         <div key={key}>
                         <NavLink to={links.path}>
-                            <div className='cursor-pointer text-xl font-medium'>
+                            <div className='cursor-pointer text-lg text-richblack-700 font-medium'>
                             {links.title}
                             </div>
                         </NavLink>
@@ -51,11 +51,17 @@ function Home() {
             {/* Authentication Buttons */}
                 <div className='flex flex-row gap-10 mr-4'>
                     <NavLink to="/sign-up" className="">
-                    <button class="gradient-border-button px-4 py-2 rounded-xl">
-                      Sign up
-                    </button>
+                      <button type="button" class="btn">
+                        <strong>Sign Up</strong>
+                        <div id="container-stars">
+                          <div id="stars"></div>
+                        </div>
 
-
+                        <div id="glow">
+                          <div class="circle"></div>
+                          <div class="circle"></div>
+                        </div>
+                      </button>
                     </NavLink>
                     <NavLink to="/login">
                         <div>Login</div>
@@ -70,9 +76,9 @@ function Home() {
             <div className="w-full lg:w-[50%] mt-1 ">
               <div className="pr-8">
                 <h2 className="text-4xl flex flex-row  roboto-thin text-[70px] font-bold leading-tight mb-10">
-                  <p className='text-[#00003f]'>Level Up Your Financial Rizz </p>
+                  <p className='text-[#00003f]  dm-serif-text-regular'>Level Up Your Financial Rizz </p>
                 </h2>
-                <p className="mt-4 text-lg text-gray-500 leading-[30px] tracking-wide">
+                <p className="mt-4 text-lg text-gray-500 leading-[30px]  sedan-regular-italic ">
                     A beginner guide to Indian taxation system, three structured progression and interactive learning
                 </p>
                 <div className="mt-8 z-20 relative">

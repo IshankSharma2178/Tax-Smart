@@ -24,9 +24,8 @@ function Navbar() {
     <div className='fixed  z-50 flex justify-center items-center'>
       {showNavbar && (
         <StickyNavbar>
-          <div className=" h-[50px]  max-w-[1360px] w-11/12 mx-auto w-full bg-gradient-to-r from-purple-300 via-pink-400 to-red-400 flex items-center justify-between  px-4 py-1 rounded-md shadow-lg">
-            {/* Logo */}
-            <span className=" text-white text-2xl ">TaxSmart Logo</span>
+          <div className=" h-[50px]  max-w-[1360px] w-11/12 mx-auto w-fit  px-16 bg-gradient-to-r from-[rgb(214,188,250)] via-[rgb(244,114,182)] to-[rgb(248,113,113)] flex items-center justify-between  px-4 py-1 rounded-md shadow-lg">
+
 
             {/* navbar-links */}
             <div className='flex flex-row gap-10'>
@@ -39,15 +38,6 @@ function Navbar() {
                   </NavLink>
                 </div>
               ))}
-            </div>
-
-            <div className='flex flex-row gap-10 mr-4'>
-              <NavLink to="/sign-up">
-                <div>Sign Up</div>
-              </NavLink>
-              <NavLink to="/login">
-                <div>Login</div>
-              </NavLink>
             </div>
           </div>
         </StickyNavbar>
