@@ -72,7 +72,7 @@
   animation: moveX 23s ease-in-out infinite;
 }
 
-/* Auth buttons */
+/* signyp login  buttons */
 
 .btn {
   display: flex;
@@ -80,14 +80,14 @@
   align-items: center;
   width:6rem;
   overflow: hidden;
-  height: 3rem;
+  height: 2.5rem;
   background-size: 300% 300%;
   cursor: pointer;
   backdrop-filter: blur(1rem);
   border-radius: 5rem;
   transition: 0.5s;
   animation: gradient_301 5s ease infinite;
-  border: double 4px transparent;
+  border: double 2px transparent;
   background-image: linear-gradient(#c6e6f1, #bce4f0),
     linear-gradient(
       137.48deg,

@@ -10,6 +10,8 @@ import { NavbarLinks } from '../data/NavbarLinks';
 import { NavLink, useNavigate } from 'react-router-dom';
 import clouds from "../assets/img/illustration/CLouds1.png"
 import logo from "../assets/img/logo.png"
+import StaticNavbar from '../component/common/StaticNavbar';
+import Button2 from '../ui/Button2';
 
 function Home() {
 
@@ -25,65 +27,25 @@ function Home() {
       >
         <div className=" mx-auto flex flex-col items-center  justify-center">
           
-          {/* Header */}
-          <div className=' max-w-[1260px] w-[95%] flex flex-row mt-8 justify-center items-center h-fit z-50'>
-            {/* logo */}
-            <div className='flex flex-row w-full m-auto items-center justify-between'>
-                <div className='w-[230px]  hover:cursor-pointer h-12'>
-                    <img src={logo}/>
-                </div>
 
-            {/* navbar-links */}
-                <div>
-                    <div className='flex flex-row gap-6 ml-8'>
-                    {NavbarLinks.map((links, key) => (
-                        <div key={key}>
-                        <NavLink to={links.path}>
-                            <div className='cursor-pointer text-lg text-richblack-700 font-medium'>
-                            {links.title}
-                            </div>
-                        </NavLink>
-                        </div>
-                    ))}
-                    </div>
-                </div>
-
-            {/* Authentication Buttons */}
-                <div className='flex flex-row gap-10 mr-4'>
-                    <NavLink to="/sign-up" className="">
-                      <button type="button" class="btn">
-                        <strong>Sign Up</strong>
-                        <div id="container-stars">
-                          <div id="stars"></div>
-                        </div>
-
-                        <div id="glow">
-                          <div class="circle"></div>
-                          <div class="circle"></div>
-                        </div>
-                      </button>
-                    </NavLink>
-                    <NavLink to="/login">
-                        <div>Login</div>
-                    </NavLink>
-                </div>
-            </div>
-
-          </div>
+        {/* Staic navbar */}
+          
+            <StaticNavbar margin={"8"} width={"95%"}/>
+          
             
             {/* Hero Section */}
           <div className="flex flex-wrap justify-between relative mx-auto pt-[70px] max-w-[1260px] w-11/12">
             <div className="w-full lg:w-[50%] mt-1 ">
-              <div className="pr-8">
-                <h2 className="text-4xl flex flex-row  roboto-thin text-[70px] font-bold leading-tight mb-10">
+              <div className="pr-0 md:pr-8">
+                <h2 className="text-4xl flex flex-row  roboto-thin text-[3.2rem] md:text-[4.37rem] font-bold leading-tight mb-10">
                   <p className='text-[#00003f]  dm-serif-text-regular'>Level Up Your Financial Rizz </p>
                 </h2>
-                <p className="mt-4 text-lg text-gray-500 leading-[30px]  sedan-regular-italic ">
-                    A beginner guide to Indian taxation system, three structured progression and interactive learning
+                <p className="mt-4 text-lg text-gray-500 leading-[30px]  sedan-regular-italic text-richblack-400">
+                A beginner guide to Indian taxation system and finances ,through structured progression and interactive learning
                 </p>
                 <div className="mt-8 z-20 relative">
                   <a>
-                  <IconButton icon="FaArrowRight" text="Explore Now" onClick={()=>navigate("/signup")}/> 
+                  <Button2 text={"Explore Now"} icon={"FaArrowRight"}/>
                   </a>
                 </div>
               </div>
@@ -94,7 +56,7 @@ function Home() {
               <img src={clouds} className='border-image opacity-60' />
             </div>
 
-            <div className="max-w-[50%] mt-12 lg:mt-0 relative z-0">
+            <div className="md:max-w-[50%] w-full mt-12 lg:mt-0 relative z-0">
               <div className="flex flex-wrap space-x-4 animate-bounce1"> 
                 <img className=" " src={heroImg} alt="Thumb 3" />
               </div>
@@ -103,7 +65,10 @@ function Home() {
         </div>
 
         {/* Clouds Icon */}
-        <div className='absolute bottom-0 w-screen w-full z-0'>
+        <div className='absolute bottom-0 w-screen w-full md:flex hidden z-0'>
+            <img  src={cloudsIcon} />
+        </div>
+        <div className='absolute bottom-0  w-[500px] h-[200px] flex md:hidden z-0 '>
             <img  src={cloudsIcon} />
         </div>
 

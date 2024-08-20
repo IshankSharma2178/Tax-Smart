@@ -21,10 +21,10 @@ function Navbar() {
   }, []);
 
   return (
-    <div className='fixed  z-50 flex justify-center items-center'>
+    <div className='fixed  z-[1000] flex justify-center items-center'>
       {showNavbar && (
         <StickyNavbar>
-          <div className=" h-[50px]  max-w-[1360px] w-11/12 mx-auto w-fit  px-16 bg-gradient-to-r from-[rgb(214,188,250)] via-[rgb(244,114,182)] to-[rgb(248,113,113)] flex items-center justify-between  px-4 py-1 rounded-md shadow-lg">
+          <div className=" h-[50px] z-[1000] max-w-[1360px] w-11/12 mx-auto w-fit  px-16 bg-gradient-to-r from-[rgb(214,188,250)] via-[rgb(244,114,182)] to-[rgb(248,113,113)] flex items-center justify-between  px-4 py-1 rounded-md shadow-lg">
 
 
             {/* navbar-links */}

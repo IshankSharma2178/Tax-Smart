@@ -1,81 +1,44 @@
 import React from 'react';
 import backgroundImg from "../../assets/img/shape/35.png";
 import { FooterLinks } from '../../data/FooterLinks';
+import logo from "../../assets/img/logo.png"
+import SocialMediaButtons from "../../ui/SocialMediaButtons"
 
 function Footer() {
   return (
     <section className="bg-[#10182F]  mx-auto w-full">
-      <div className="flex flex-wrap justify-between gap-[3.5rem] p-[60px]">
-        <div className="footer-col">
-            {/* {
-                FooterLinks.
+      <div className="flex flex-wrap justify-between gap-y-[3.5rem] py-[60px] px-6 md:p-[60px]">
 
-            } */}
-          <h4 className="text-white text-[1.2rem] font-normal">Info</h4>
-          <ul className="mt-5">
-            <li className="mb-[10px]">
-              <a href="#" className="text-[#bfbfbf] hover:text-white">About Us</a>
-            </li>
-            <li className="mb-[10px]">
-              <a href="#" className="text-[#bfbfbf] hover:text-white">Compressions</a>
-            </li>
-            <li className="mb-[10px]">
-              <a href="#" className="text-[#bfbfbf] hover:text-white">Customers</a>
-            </li>
-            <li className="mb-[10px]">
-              <a href="#" className="text-[#bfbfbf] hover:text-white">Service</a>
-            </li>
-            <li className="mb-[10px]">
-              <a href="#" className="text-[#bfbfbf] hover:text-white">Collection</a>
-            </li>
-          </ul>
+        <div className="footer-col max-w-[14rem]">
+            <div className=' w-[12rem]' >
+                <img src={logo} />
+            </div>
+            <div className='text-richblack-25 w-'>
+            Excellence decisively nay man per impression maximum contrasted remarkably is perfect point. uncommonly solicitude inhabiting projection.
+            </div>
+            <div className='-translate-y-5'>
+              <SocialMediaButtons/>
+            </div>
         </div>
-        <div className="footer-col">
-          <h4 className="text-white text-[1.2rem] font-normal">Explore</h4>
-          <ul className="mt-5">
-            <li className="mb-[10px]">
-              <a href="#" className="text-[#bfbfbf] hover:text-white">Free Designs</a>
-            </li>
-            <li className="mb-[10px]">
-              <a href="#" className="text-[#bfbfbf] hover:text-white">Latest Designs</a>
-            </li>
-            <li className="mb-[10px]">
-              <a href="#" className="text-[#bfbfbf] hover:text-white">Themes</a>
-            </li>
-            <li className="mb-[10px]">
-              <a href="#" className="text-[#bfbfbf] hover:text-white">Popular Designs</a>
-            </li>
-            <li className="mb-[10px]">
-              <a href="#" className="text-[#bfbfbf] hover:text-white">Art Skills</a>
-            </li>
-            <li className="mb-[10px]">
-              <a href="#" className="text-[#bfbfbf] hover:text-white">New Uploads</a>
-            </li>
-          </ul>
-        </div>
-        <div className="footer-col">
-          <h4 className="text-white text-[1.2rem] font-normal">Legal</h4>
-          <ul className="mt-5">
-            <li className="mb-[10px]">
-              <a href="#" className="text-[#bfbfbf] hover:text-white">Customer Agreement</a>
-            </li>
-            <li className="mb-[10px]">
-              <a href="#" className="text-[#bfbfbf] hover:text-white">Privacy Policy</a>
-            </li>
-            <li className="mb-[10px]">
-              <a href="#" className="text-[#bfbfbf] hover:text-white">GDPR</a>
-            </li>
-            <li className="mb-[10px]">
-              <a href="#" className="text-[#bfbfbf] hover:text-white">Security</a>
-            </li>
-            <li className="mb-[10px]">
-              <a href="#" className="text-[#bfbfbf] hover:text-white">Testimonials</a>
-            </li>
-            <li className="mb-[10px]">
-              <a href="#" className="text-[#bfbfbf] hover:text-white">Media Kit</a>
-            </li>
-          </ul>
-        </div>
+        
+            {
+                FooterLinks.map((singleFooter,index)=>(
+                    <div className="footer-col">
+                        <h4 key={index} className="text-richblack-5 text-[1.2rem] font-normal">{singleFooter.title}</h4>
+                        <ul className="mt-5">
+                            {
+                                singleFooter.links.map((links,ind)=>(
+                                    <li className="mb-[10px] hover:cursor-pointer">
+                                        <div className="text-richblack-200 hover:translate-x-1 transition-all duration-150 hover:text-richblack-25">{links.subLink}</div>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+                ))
+
+            }
+          
         <div className="footer-col">
           <h4 className="text-white text-[1.2rem] font-normal">Newsletter</h4>
           <p className="mt-[20px] text-[#bfbfbf] max-w-[300px]">

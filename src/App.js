@@ -5,6 +5,7 @@ import Navbar from './component/common/Navbar';
 import { Route, Routes } from 'react-router';
 import Home from './pages/Home';
 import Footer from './component/common/Footer';
+import Ai from './AI/Ai';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Navbar/>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/ai" element={<Ai />} />
       </Routes>
       <Footer/>
     </div>
