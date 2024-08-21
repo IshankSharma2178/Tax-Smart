@@ -1,68 +1,89 @@
 import React from 'react';
 import backgroundImg from "../../assets/img/shape/35.png";
 import { FooterLinks } from '../../data/FooterLinks';
-import logo from "../../assets/img/logo.png"
-import SocialMediaButtons from "../../ui/SocialMediaButtons"
+import logo from "../../assets/img/logo-invert-color-removebg-preview.png";
+import SocialMediaButtons from "../../ui/SocialMediaButtons";
+import { useNavigate } from 'react-router';
+import Button3 from '../../ui/Button3';
 
 function Footer() {
-  return (
-    <section className="bg-[#10182F]  mx-auto w-full">
-      <div className="flex flex-wrap justify-between gap-y-[3.5rem] py-[60px] px-6 md:p-[60px]">
+  const navigate = useNavigate();
 
-        <div className="footer-col max-w-[14rem]">
-            <div className=' w-[12rem]' >
-                <img src={logo} />
+  return (
+    <section className="bg-[#03112d] relative pt-6 mx-auto w-full">
+      {/* Background Wave Image */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <img
+          src={backgroundImg}
+          alt="Wave background"
+          className="w-full h-full object-cover"
+          style={{ 
+            width: '200%',  
+            height: 'auto',
+          }}
+        />
+      </div>
+
+
+      <div className='flex flex-col max-w-[1260px] w-[98%] m-auto relative z-10'>
+
+        <div className="flex flex-wrap justify-between gap-y-[3.5rem] py-[60px] px-6 md:px-8 md:py-[60px]">
+
+          <div className="max-w-[18rem] flex-col flex items-start">
+            <div className='w-[12rem] mb-10'>
+              <img src={logo} alt="Logo" />
             </div>
-            <div className='text-richblack-25 w-'>
-            Excellence decisively nay man per impression maximum contrasted remarkably is perfect point. uncommonly solicitude inhabiting projection.
+            <div className='text-md text-richblack-50 tracking-wide leading-6'>
+              Excellence decisively nay man per impression maximum contrasted remarkably is perfect point. uncommonly solicitude inhabiting projection.
             </div>
             <div className='-translate-y-5'>
-              <SocialMediaButtons/>
+              <SocialMediaButtons />
             </div>
-        </div>
-        
-            {
-                FooterLinks.map((singleFooter,index)=>(
-                    <div className="footer-col">
-                        <h4 key={index} className="text-richblack-5 text-[1.2rem] font-normal">{singleFooter.title}</h4>
-                        <ul className="mt-5">
-                            {
-                                singleFooter.links.map((links,ind)=>(
-                                    <li className="mb-[10px] hover:cursor-pointer">
-                                        <div className="text-richblack-200 hover:translate-x-1 transition-all duration-150 hover:text-richblack-25">{links.subLink}</div>
-                                    </li>
-                                ))
-                            }
-                        </ul>
-                    </div>
-                ))
+          </div>
 
-            }
-          
-        <div className="footer-col">
-          <h4 className="text-white text-[1.2rem] font-normal">Newsletter</h4>
-          <p className="mt-[20px] text-[#bfbfbf] max-w-[300px]">
-            Subscribe to our newsletter for a weekly dose of news, updates, helpful tips, and exclusive offers.
-          </p>
-          <form className="flex gap-2 mt-5" action="#">
-            <input
-              type="text"
-              placeholder="Your email"
-              required
-              className="h-[40px] rounded-lg bg-transparent w-full outline-none border border-[#7489C6] caret-white text-white pl-[10px] placeholder-[#ccc]"
-            />
-            <button
-              type="submit"
-              className="bg-white outline-none border-none px-4 py-2 rounded-lg cursor-pointer font-medium transition duration-200 ease-in-out hover:bg-[#cecccc]"
-            >
-              SUBSCRIBE
-            </button>
-          </form>
-          <div className="flex gap-[30px] mt-[30px] cursor-pointer">
-            <i className="fa-brands fa-facebook-f text-[#afb6c7] hover:text-white"></i>
-            <i className="fa-brands fa-twitter text-[#afb6c7] hover:text-white"></i>
-            <i className="fa-brands fa-linkedin text-[#afb6c7] hover:text-white"></i>
-            <i className="fa-brands fa-github text-[#afb6c7] hover:text-white"></i>
+          {FooterLinks.map((singleFooter, index) => (
+            <div key={index}>
+              <h4 className="text-richblack-5 text-[1.2rem] font-normal">{singleFooter.title}</h4>
+              <ul className="mt-5">
+                {singleFooter.links.map((links, ind) => (
+                  <li key={ind} className="mb-[10px] hover:cursor-pointer">
+                    <div className="text-richblack-200 hover:translate-x-1 transition-all duration-150 hover:text-richblack-25">
+                      {links.subLink}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+
+          <div>
+            <h4 className="text-white text-[1.2rem] font-normal">Newsletter</h4>
+            <p className="mt-[20px] text-richblack-50 max-w-[300px]">
+              Subscribe to our newsletter for a weekly dose of news, updates, helpful tips, and exclusive offers.
+            </p>
+            <form className="flex gap-2 justify-center items-center mt-5" action="#">
+              <input
+                type="text"
+                placeholder="Your email"
+                required
+                className="h-[40px] rounded-lg bg-transparent w-full outline-none border border-[#7489C6] caret-white text-white pl-[10px] placeholder-[#ccc]"
+              />
+              <Button3 text={"Subscribe"}/>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+      <div className='border-t py-6 m-auto border-richblack-500'>
+        <div className='flex flex-row justify-between mx-auto max-w-[1260px] w-11/12 text-sm'>
+          <div className='text-richblack-25'>
+            © Copyright 2024. All Rights Reserved by <b onClick={() => navigate("/")} className='hover:cursor-pointer'>TaxSmart</b>
+          </div>
+          <div className='flex flex-row justify-between text-richblack-5 w-[17%]'>
+            <p className='hover:cursor-pointer'>Terms</p>
+            <p className='hover:cursor-pointer'>Privacy</p>
+            <p className='hover:cursor-pointer'>Support</p>
           </div>
         </div>
       </div>

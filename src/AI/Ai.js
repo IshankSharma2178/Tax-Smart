@@ -26,7 +26,7 @@ const ChatApp = () => {
         </div>
         <div>
         </div>
-        <div className="flex flex-col h-[90vh] max-w-[1100px] w-[80%] mx-auto p-4 bg-gray-100">
+        <div className="flex flex-col h-[85vh] max-w-[1100px] w-[80%] mx-auto p-4 bg-gray-100">
         <div className="flex-1 overflow-auto bg-white shadow-md rounded-lg p-4">
             <div className="space-y-4">
             {messages.map((msg, index) => (
@@ -36,13 +36,13 @@ const ChatApp = () => {
             ))}
             </div>
         </div>
-        <form className="flex mt-4" onSubmit={handleSubmit}>
+        <form className="flex mt-4 w-[70%] m-auto overflow-y-auto" onSubmit={handleSubmit}>
             <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Type a message..."
-            className="flex-1 p-2 border rounded-l-lg border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="flex-1 p-2 border rounded-l-lg  border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <button
             type="submit"

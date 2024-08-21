@@ -4,7 +4,6 @@ import './App.css';
 import Navbar from './component/common/Navbar';
 import { Route, Routes } from 'react-router';
 import Home from './pages/Home';
-import Footer from './component/common/Footer';
 import Ai from './AI/Ai';
 
 function App() {
@@ -14,8 +13,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/ai" element={<Ai />} />
+        {/* <Route path="*" element={<Error />} /> */}
       </Routes>
-      <Footer/>
+      
     </div>
   );
 }
