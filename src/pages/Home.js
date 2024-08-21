@@ -13,6 +13,7 @@ import logo from "../assets/img/logo.png"
 import StaticNavbar from '../component/common/StaticNavbar';
 import Footer from "../component/common/Footer"
 import Button2 from '../ui/Button2';
+import ReviewSlider from '../component/Core/Homepage/ReviewSlider';
 
 function Home() {
 
@@ -73,6 +74,11 @@ function Home() {
         </div>
 
       </div>
+
+
+      {/* Review Slider */}
+
+      <ReviewSlider/>
       <Footer />
     </div>
   );

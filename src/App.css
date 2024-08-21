@@ -46,6 +46,21 @@
     animation: bounce1 2s infinite;
 }
 
+@keyframes bounce2 {
+  0%, 100% {
+      transform: translateY(0);
+      animation-timing-function: ease-in-out;
+  }
+  50% {
+      transform: translateY(-30%);
+      animation-timing-function: ease-in-out;
+  }
+}
+
+.animate-bounce2 {
+  animation: bounce2 5s infinite;
+}
+
 .shadow-image {
   filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5)); 
 }
@@ -265,4 +280,27 @@ strong {
   font-family: "Sedan", serif;
   font-weight: 400;
   font-style: normal;
+}
+
+/* review background color  */
+
+.background1 {
+  background: linear-gradient(5deg, #3f1399 10%, #0c5adb 80%);
+  width: 100%;
+
+}
+
+/* cross animation */
+
+@keyframes scaleInOut {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2); /* Adjust the scaling factor as needed */
+  }
+}
+
+.scale-animation {
+  animation: scaleInOut 3s ease-in-out infinite; /* Adjust the duration as needed */
 }

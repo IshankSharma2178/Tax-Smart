@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import StaticNavbar from '../component/common/StaticNavbar';
 import { NavLink } from 'react-router-dom';
-
+import banner from "../assets/img/shape/banner.jpg"
 
 const ChatApp = () => {
   const [messages, setMessages] = useState([]);
@@ -20,13 +20,16 @@ const ChatApp = () => {
   };
 
   return (
-    <div >
+    <div 
+            className="bg-cover bg-no-repeat bg-center h-screen "
+            style={{ backgroundImage: `url(${banner})` }}
+    >
         <div className='max-w-[1360px] w-[95%] m-auto'>
             <StaticNavbar margin={"8"}/>
         </div>
         <div>
         </div>
-        <div className="flex flex-col h-[85vh] max-w-[1100px] w-[80%] mx-auto p-4 bg-gray-100">
+        <div className="flex flex-col h-screen max-w-[1100px] w-[80%] mx-auto p-4 bg-gray-100 mx-auto">
         <div className="flex-1 overflow-auto bg-white shadow-md rounded-lg p-4">
             <div className="space-y-4">
             {messages.map((msg, index) => (
