@@ -30,7 +30,9 @@ function Home() {
 
         {/* Staic navbar */}
           
-            <StaticNavbar margin={"8"} width={"95%"}/>
+        <div className='max-w-[1360px] w-[95%] m-auto'>
+            <StaticNavbar margin={"8"}/>
+        </div>
           
             
             {/* Hero Section */}

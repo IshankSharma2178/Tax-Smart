@@ -21,8 +21,8 @@ const ChatApp = () => {
 
   return (
     <div >
-        <div className='max-w-[1360px] w-11/12 m-auto'>
-            <StaticNavbar margin={"4"} width={"100%"}/>
+        <div className='max-w-[1360px] w-[95%] m-auto'>
+            <StaticNavbar margin={"8"}/>
         </div>
         <div>
         </div>

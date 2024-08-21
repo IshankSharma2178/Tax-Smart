@@ -6,7 +6,7 @@ import Button from '../../ui/Button1'
 
 function StaticNavbar({margin,width}) {
   return (
-        <div className={`max-w-[1260px] w-[${width}] flex flex-row  justify-center items-center h-fit z-50 mt-${margin}`} >
+        <div className={`max-w-[1360px]  flex flex-row  justify-center items-center h-fit z-50 mt-${margin}`} >
             {/* logo */}
             <div className='flex flex-row w-full m-auto items-center justify-between'>
                 <div className='w-[230px]  hover:cursor-pointer h-12'>
