@@ -32,18 +32,18 @@ function ReviewSlider() {
         </svg>
       </div>
       <div className="background1 relative">
-        <div className="max-w-[1260px] w-11/12 mx-auto h-[550px] relative">
+        <div className="max-w-[1260px] w-11/12 mx-auto h-[800px] md:h-[550px] relative">
           <div className='absolute size-[2.75rem] left-4 transition-all top-6 scale-animation'>
             <img src={cross} />
           </div>
-          <div className="flex flex-row items-center h-[80%] justify-between gap-8">
-            <div className="w-[32%]">
+          <div className="flex flex-col md:flex-row items-center md:pt-0 pt-[5rem] h-[100%] md:h-[80%] md:justify-between gap-12 md:gap-8">
+            <div className= "w-[100%] md:w-[32%]">
               <h1 className="text-[2.75rem] font-bold font-sans text-white leading-tight">
                 What customers feedback about us
               </h1>
-              <p>Based on 1,258 reviews</p>
+              <p className='text-richblack-5' >Based on 1,258 reviews</p>
             </div>
-            <div className="w-[60%] flex items-center relative">
+            <div className="w-[100%] md:w-[60%] mx-auto flex items-center relative">
               <Card />
               <div className='size-[6rem] animate-bounce2 -right-8 -bottom-16 z-[1] absolute'>
                 <img src={blackBall} />

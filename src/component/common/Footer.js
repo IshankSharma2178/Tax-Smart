@@ -29,8 +29,8 @@ function Footer() {
 
         <div className="flex flex-wrap justify-between gap-y-[3.5rem] py-[60px] px-6 md:px-8 md:py-[60px]">
 
-          <div className="max-w-[18rem] flex-col flex items-start">
-            <div className='w-[12rem] mb-10'>
+          <div className="w-full md:max-w-[18rem] flex-col flex items-start">
+            <div className='w-[12rem]  mb-10'>
               <img src={logo} alt="Logo" />
             </div>
             <div className='text-md text-richblack-50 tracking-wide leading-6'>

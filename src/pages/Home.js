@@ -53,7 +53,7 @@ function Home() {
             </div>
 
             {/* Cloud Image */}
-            <div className='absolute -top-16 w-[70%] z-[1] -translate-x-[8rem] -translate-y-'>
+            <div className='absolute top-0 md:-top-16 w-[100%] md:w-[70%]  z-[1] md:-translate-x-[8rem] md:-translate-y-'>
               <img src={clouds} className='border-image opacity-60' alt="Clouds" />
             </div>
 

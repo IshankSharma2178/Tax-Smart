@@ -38,7 +38,7 @@ function Card() {
             }}
         
         modules={[FreeMode, Pagination, Autoplay]}
-        className="w-full h-full"
+        className="w-full h-full "
       >
         {data?.map((review, i) => {
           return (
