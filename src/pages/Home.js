@@ -69,7 +69,7 @@ function Home() {
         <div className='absolute bottom-0 w-screen w-full md:flex hidden z-[900]'>
           <img src={cloudsIcon} alt="Clouds Icon" />
         </div>
-        <div className='absolute bottom-0 w-[500px] h-[200px] flex md:hidden z-[900]'>
+        <div className='absolute bottom-0 h-[100px] md:w-[500px]  md:h-[200px] flex md:hidden z-[900]'>
           <img src={cloudsIcon} alt="Clouds Icon" />
         </div>
 

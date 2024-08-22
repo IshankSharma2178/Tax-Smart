@@ -76,11 +76,11 @@ function Footer() {
 
       </div>
       <div className='border-t py-6 m-auto border-richblack-500'>
-        <div className='flex flex-row justify-between mx-auto max-w-[1260px] w-11/12 text-sm'>
-          <div className='text-richblack-25'>
+        <div className='flex flex-col md:flex-row justify-between md:gap-0 gap-6 mx-auto max-w-[1260px] w-11/12 text-sm'>
+          <div className='text-richblack-25 px-4 md:px-0 leading-6 md:text-none text-center '>
             © Copyright 2024. All Rights Reserved by <b onClick={() => navigate("/")} className='hover:cursor-pointer'>TaxSmart</b>
           </div>
-          <div className='flex flex-row justify-between text-richblack-5 w-[17%]'>
+          <div className='flex flex-row justify-center gap-6 md:gap-0 md:justify-between text-richblack-5  text-center w-[100%] md:w-[17%]'>
             <p className='hover:cursor-pointer'>Terms</p>
             <p className='hover:cursor-pointer'>Privacy</p>
             <p className='hover:cursor-pointer'>Support</p>
