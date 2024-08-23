@@ -307,5 +307,5 @@ strong {
 
 /* navbar color */
 .background2 {
-  background: linear-gradient(90deg, rgba(133, 201, 255, 1) 0%, rgba(241, 157, 255, 1) 100%);
+  background: linear-gradient(147deg, rgba(241, 157, 255, 1) 0%, rgba(245, 185, 183, 1) 43%, rgba(241, 157, 255, 1) 100%);
 }
