@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import StaticNavbar from '../component/common/StaticNavbar';
-import banner from "../assets/img/shape/banner.jpg"
+import { AiOutlineLike, AiOutlineDislike, AiOutlineHeart } from "react-icons/ai";
+import { MdOutlineContentCopy } from "react-icons/md";
+import { IoReload, IoShareSocialOutline } from "react-icons/io5";
+import { LuSend } from "react-icons/lu";
+import { RxSpeakerQuiet } from "react-icons/rx";
 
 const ChatApp = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
+  const chatContainerRef = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -12,47 +17,78 @@ const ChatApp = () => {
       setMessages([...messages, { text: input, type: 'user' }]);
       setInput('');
       setTimeout(() => {
-        setMessages([...messages, { text: input, type: 'user' }, { text: `You said: ${input}`, type: 'bot' }]);
+        setMessages(prevMessages => [...prevMessages, { text: `Bot: ${input}`, type: 'bot' }]);
       }, 1000);
     }
   };
 
+  useEffect(() => {
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+    }
+  }, [messages]);
+
   return (
-    <div 
-            className="bg-cover bg-no-repeat bg-center h-screen "
-            style={{ backgroundImage: `url(${banner})` }}
-    >
-        <div className='max-w-[1360px] w-[96%] m-auto '>
-            <StaticNavbar margin={"8"}/>
-        </div>
-        <div>
-        </div>
-        <div className="flex flex-col h-screen max-w-[1100px] w-[80%] mx-auto p-4 bg-gray-100 mx-auto">
-        <div className="flex-1 overflow-auto bg-white shadow-md rounded-lg p-4">
-            <div className="space-y-4">
+    <div>
+      <div className='max-w-[1360px]  m-auto w-[95%]'>
+        <StaticNavbar margin={1}/>
+      </div>
+      <div className='w-screen h-[1px]  text-richblack-50 border-b border-richblack-50'> </div>
+      <div className='max-w-[800px] m-auto  h-[calc(100vh-15vh)] ' >
+        <div className='flex flex-col justify-between h-full'>
+
+          <div ref={chatContainerRef} className="flex-1 rounded-lg p-4 overflow-auto">
+            <div className="space-y-4 flex flex-col">
             {messages.map((msg, index) => (
-                <div key={index} className={`p-2 rounded-lg ${msg.type === 'user' ? 'bg-blue-100 text-right' : 'bg-gray-100 text-left'}`}>
-                {msg.text}
+              <div key={index} className={`px-4 py-6 relative flex flex-col gap-4 h-auto rounded-lg ${msg.type === 'user' ? 'bg-[rgb(252,232,231)] text-right ml-auto max-w-[70%] min-w-[45%]  ' : ' mr-auto max-w-[70%] min-w-[45%] bg-[rgb(213,218,231)] text-left'} break-words`}>
+
+                <div className='flex flex-row gap-3'>
+                  <RxSpeakerQuiet className='size-[1.2rem] cursor-pointer'/>
+                  <AiOutlineHeart className='size-[1.2rem] cursor-pointer'/>
                 </div>
+  
+                <p>{msg.text}</p>
+
+                {msg.type !== 'user' && 
+                  <div className='flex flex-row gap-3'>
+                    <AiOutlineLike className='size-[1.2rem] cursor-pointer'/>
+                    <AiOutlineDislike className='size-[1.2rem] cursor-pointer'/>
+                  </div>
+                }
+
+                <div className='absolute flex flex-row gap-2 -bottom-5 right-2'>
+                  <div className='text-black bg-white text-sm border rounded-lg border-richblack-50 cursor-pointer px-4 py-1 flex flex-row gap-2 items-center'>
+                    <MdOutlineContentCopy /> <p>Copy</p>
+                  </div>
+                  <div className='text-black bg-white text-sm border rounded-lg border-richblack-50 cursor-pointer px-4 py-1 flex flex-row gap-2 items-center'>
+                    <IoReload /> Regenerate
+                  </div>
+                  <div className='text-black bg-white text-sm border rounded-lg border-richblack-50 cursor-pointer px-4 py-1 flex flex-row gap-2 items-center'>
+                    <IoShareSocialOutline /> Share
+                  </div>
+                </div>
+              </div>
             ))}
             </div>
-        </div>
-        <form className="flex mt-4 w-[70%] m-auto overflow-y-auto" onSubmit={handleSubmit}>
+          </div>
+
+          <form className="flex  w-[80%] m-auto overflow-y-auto relative" onSubmit={handleSubmit}>
             <input
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="Type a message..."
-            className="flex-1 p-2 border rounded-l-lg  border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="Type a message..."
+              className="flex-1 px-2 py-4 border rounded-lg text-lg border-[rgb(211,212,213)]  outline-none"
             />
             <button
-            type="submit"
-            className="p-2 bg-blue-500 text-white rounded-r-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              type="submit"
+              className="p-2 right-2 top-4 bg-[rgb(213,218,231)] text-richblue-900 absolute rounded-lg outline-none hover:bg-richblack-50 focus:bg-richblack-100"
             >
-            Send
+              <LuSend />
             </button>
-        </form>
+          </form>
         </div>
+      </div>
     </div>
   );
 };

@@ -13,16 +13,19 @@ function StaticNavbar({margin, width}) {
 
   const navigate = useNavigate()
     return (
-      <div className={`max-w-[1360px] flex flex-row justify-center items-center z-[15] h-fit mt-[2rem] md:mt-${margin}`}>
-        {/* logo */}
-        <div className='flex flex-row w-full m-auto items-center justify-between'>
+      <div className={`max-w-[1360px] flex flex-row justify-center items-center z-[15] h-fit h-[5.5rem] md:mt-${margin}`}>
+        <div className='flex flex-row w-full mx-auto items-center justify-between'>
+          
+          {/* sidebar for sm screen */}
           <div className='size-10 md:hidden flex ' onClick={() => setShowSidebar(true)}>
             <IoReorderThree className='w-full text-richblack-800 h-full md:hidden flex'/>
           </div>
           <div className='md:hidden flex'>
             <Sidebar setShowSidebar={setShowSidebar} showSidebar={showSidebar} />
           </div>
-          <div onClick={()=>navigate("/")} className='w-[180px] md:w-[230px] hover:cursor-pointer h-12'>
+
+          {/* Navbar  */}
+          <div onClick={()=>navigate("/")} className='w-[180px] pt-2 md:w-[230px] hover:cursor-pointer h-full'>
             <img src={logo} alt="Logo" />
           </div>
   
