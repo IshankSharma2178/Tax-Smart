@@ -25,10 +25,8 @@ function Navbar() {
       {showNavbar && (
         <StickyNavbar>
           <div
-            style={{
-    background: 'linear-gradient(90deg, rgba(221, 218, 215, 1) 0%, rgba(130, 206, 238, 1) 34%, rgba(23, 61, 133, 1) 87%)',
-  }}
-           className=" h-[50px] z-[10] max-w-[1360px] w-11/12 mx-auto w-fit  px-16  flex items-center justify-between  px-4 py-1 rounded-md shadow-lg">
+
+           className=" h-[50px] z-[10] max-w-[1360px] w-11/12 mx-auto background2 w-fit  px-16  flex items-center justify-between  px-4 py-1 rounded-md shadow-lg">
 
             {/* navbar-links */}
             <div className='flex flex-row gap-10'>

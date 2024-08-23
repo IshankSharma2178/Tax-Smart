@@ -304,3 +304,8 @@ strong {
 .scale-animation {
   animation: scaleInOut 3s ease-in-out infinite; /* Adjust the duration as needed */
 }
+
+/* navbar color */
+.background2 {
+  background: linear-gradient(90deg, rgba(133, 201, 255, 1) 0%, rgba(241, 157, 255, 1) 100%);
+}
