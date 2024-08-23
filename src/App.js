@@ -8,11 +8,12 @@ import Ai from './AI/Ai';
 import TaxCalculator from './pages/TaxCalculator';
 import Modules from './pages/Modules';
 import About from './pages/About';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 
 function App() {
   return (
     <div className='w-screen min-h-screen  flex flex-col font-inter overflow-x-hidden overflow-y-auto'>
-      <Navbar/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/ai" element={<Ai />} />
@@ -20,6 +21,9 @@ function App() {
         <Route path="/modules" element={<Modules />} />
         <Route path="/about" element={<About />} />
         {/* <Route path="*" element={<Error />} /> */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+
       </Routes>
       
     </div>

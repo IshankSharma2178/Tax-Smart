@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavbarLinks } from '../../data/NavbarLinks';
-import { NavLink } from 'react-router-dom';
+import { matchPath, NavLink, useLocation } from 'react-router-dom';
 import StickyNavbar from "react-sticky-navbar";
 
 function Navbar() {
@@ -8,7 +8,7 @@ function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY === 0) {
+      if ( window.scrollY < 303.9199981689453 & window.scrollY >= 0) {
         setShowNavbar(false);
       } else {
         setShowNavbar(true);

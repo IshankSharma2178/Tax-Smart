@@ -1,19 +1,14 @@
 import React from 'react';
 import heroImg from "../assets/img/illustration/8.png"
 import banner from "../assets/img/shape/banner.jpg";
-import arrow from "../assets/img/shape/17.png";
-import { FaArrowRight } from "react-icons/fa";
-import IconButton from '../component/common/IconButton';
 import cloudsIcon from "../assets/img/icon/5.png"
-import greenDots from "../assets/img/shape/6.png"
-import { NavbarLinks } from '../data/NavbarLinks';
 import { NavLink, useNavigate } from 'react-router-dom';
 import clouds from "../assets/img/illustration/CLouds1.png"
-import logo from "../assets/img/logo.png"
 import StaticNavbar from '../component/common/StaticNavbar';
 import Footer from "../component/common/Footer"
 import Button2 from '../ui/Button2';
 import ReviewSlider from '../component/Core/Homepage/ReviewSlider';
+import Navbar from '../component/common/Navbar';
 
 function Home() {
 
@@ -28,6 +23,8 @@ function Home() {
         style={{ backgroundImage: `url(${banner})` }}
       >
         <div className="mx-auto flex flex-col items-center justify-center">
+
+      <Navbar/>
 
           {/* Static navbar */}
           <div className='max-w-[1360px] w-[95%] m-auto relative z-[1100] m-'>

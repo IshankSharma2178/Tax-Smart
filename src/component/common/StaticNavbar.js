@@ -38,7 +38,7 @@ function StaticNavbar({margin, width}) {
           
           {/* Authentication Buttons */}
           <div className='flex flex-row gap-4 mr-0 md:mr-4'>
-            <NavLink to="/sign-up" className="">
+            <NavLink to="/signup" className="">
               <Button text={"Sign Up"} />
             </NavLink>
             <NavLink to="/login" className="md:flex hidden">
