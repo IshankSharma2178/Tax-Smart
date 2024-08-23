@@ -13,7 +13,7 @@ function StaticNavbar({margin, width}) {
 
   const navigate = useNavigate()
     return (
-      <div className={`max-w-[1360px] flex flex-row justify-center items-center z-[1100] h-fit mt-[2rem] md:mt-${margin}`}>
+      <div className={`max-w-[1360px] flex flex-row justify-center items-center z-[15] h-fit mt-[2rem] md:mt-${margin}`}>
         {/* logo */}
         <div className='flex flex-row w-full m-auto items-center justify-between'>
           <div className='size-10 md:hidden flex ' onClick={() => setShowSidebar(true)}>

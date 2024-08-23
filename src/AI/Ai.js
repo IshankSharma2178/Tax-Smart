@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import StaticNavbar from '../component/common/StaticNavbar';
-import { NavLink } from 'react-router-dom';
 import banner from "../assets/img/shape/banner.jpg"
 
 const ChatApp = () => {
@@ -12,7 +11,6 @@ const ChatApp = () => {
     if (input.trim()) {
       setMessages([...messages, { text: input, type: 'user' }]);
       setInput('');
-      // Simulate a bot response
       setTimeout(() => {
         setMessages([...messages, { text: input, type: 'user' }, { text: `You said: ${input}`, type: 'bot' }]);
       }, 1000);
@@ -24,7 +22,7 @@ const ChatApp = () => {
             className="bg-cover bg-no-repeat bg-center h-screen "
             style={{ backgroundImage: `url(${banner})` }}
     >
-        <div className='max-w-[1360px] w-[95%] m-auto'>
+        <div className='max-w-[1360px] w-[96%] m-auto '>
             <StaticNavbar margin={"8"}/>
         </div>
         <div>

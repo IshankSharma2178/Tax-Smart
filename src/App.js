@@ -10,10 +10,12 @@ import Modules from './pages/Modules';
 import About from './pages/About';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import TopNavigationButton from './component/common/TopNavigationButton';
 
 function App() {
   return (
     <div className='w-screen min-h-screen  flex flex-col font-inter overflow-x-hidden overflow-y-auto'>
+      <TopNavigationButton />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/ai" element={<Ai />} />
