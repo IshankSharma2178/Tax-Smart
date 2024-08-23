@@ -29,12 +29,12 @@ const ChatApp = () => {
   }, [messages]);
 
   return (
-    <div>
+    <div className='bg-richblack-900'>
       <div className='max-w-[1360px]  m-auto w-[95%]'>
         <StaticNavbar margin={1}/>
       </div>
-      <div className='w-screen h-[1px]  text-richblack-50 border-b border-richblack-50'> </div>
-      <div className='max-w-[800px] m-auto  h-[calc(100vh-15vh)] ' >
+      <div className='w-screen h-[1px]  text-richblack-50 border-b  border-richblack-50'> </div>
+      <div className='max-w-[800px] m-auto  h-[calc(100vh-15.15vh)] ' >
         <div className='flex flex-col justify-between h-full'>
 
           <div ref={chatContainerRef} className="flex-1 rounded-lg p-4 overflow-auto">

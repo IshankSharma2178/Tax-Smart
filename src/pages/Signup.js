@@ -6,9 +6,9 @@ function Signup() {
   return (
     <Template 
       img1={images}
-      heading={"Join the millions learning to code with StudyNotion for free"}
-      subheading1={"Build skills for today, tomorrow, and beyond."}
-      subheading2={"Education to future-proof your career."}
+      heading={"Join the millions learning to Tax for free"}
+      subheading1={"Get Knowlwegde for today, tomorrow, and beyond."}
+      subheading2={"Education to future-proof ."}
       formType={"signup"}>
     </Template>
   )

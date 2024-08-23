@@ -1,4 +1,5 @@
 import React from 'react';
+import { IoIosArrowUp } from "react-icons/io";
 
 function TopNavigationButton() {
 
@@ -14,9 +15,9 @@ function TopNavigationButton() {
     return (
         <div className='fixed right-4 bottom-4 z-[2000000]'>
             <button 
-                className='bg-richblack-800 text-white p-2 rounded-full shadow-lg hover:bg-gray-700 transition duration-300' 
+                className='bg-white text-black shadow-lg border hover:animate-bounce border-richblack-200 p-3 rounded-full  hover:bg-gray-700 transition duration-300' 
                 onClick={navigationHandler}>
-                Top
+                    <IoIosArrowUp className='text-xl'/>
             </button>
         </div>
     );

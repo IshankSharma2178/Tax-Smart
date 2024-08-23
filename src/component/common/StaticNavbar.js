@@ -13,7 +13,7 @@ function StaticNavbar({margin, width}) {
 
   const navigate = useNavigate()
     return (
-      <div className={`max-w-[1360px] flex flex-row justify-center items-center z-[15] h-fit h-[5.5rem] md:mt-${margin}`}>
+      <div className={`max-w-[1360px] flex flex-row justify-center items-center z-[15]        h-[15.15vh] md:mt-${margin}`}>
         <div className='flex flex-row w-full mx-auto items-center justify-between'>
           
           {/* sidebar for sm screen */}

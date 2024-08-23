@@ -9,17 +9,17 @@ function Template({img1, img2,heading,subheading1,subheading2,formType}) {
 
   return (
     <>
-    <div className='max-w-[1360px] w-[95%] m-auto relative z-[11] '>
+    <div className='max-w-[1360px] w-[95%] m-auto relative z-[11]'>
         <StaticNavbar margin={"8"} />
       </div>
-    <div className="w-screen  m-auto">
+    <div className="w-screen  bg-richblack-400 m-auto">
       
       {loading ? (
         <div className="spinner"></div>
       ) : (
-        <div className='min-h-[calc(100vh-3.5rem)] w-11/12 max-w-[1260px]'> 
+        <div className='min-h-[calc(100vh-3.5rem)] m-auto w-11/12 max-w-[1260px] '> 
           <div className="mx-auto flex  md:flex-row flex-col justify-between  ">
-            <div className=" w-[50%] ">
+            <div className=" w-full md:w-[50%] ">
               <h1 className="text-[1.875rem] font-semibold leading-[2.375rem] text-richblack-5">
                 {heading}
               </h1>
@@ -39,7 +39,7 @@ function Template({img1, img2,heading,subheading1,subheading2,formType}) {
                 />
               </div>
             </div>
-            <div className='w-[50%]'>
+            <div className= 'w-full md:w-[50%]'>
               {formType === "signup" ? <SignupForm /> : <LoginForm />}
             </div>
           </div>
