@@ -8,7 +8,7 @@ function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if ( window.scrollY < 303.9199981689453 & window.scrollY >= 0) {
+      if ( window.scrollY <= 303.9199981689453 & window.scrollY >= 0) {
         setShowNavbar(false);
       } else {
         setShowNavbar(true);

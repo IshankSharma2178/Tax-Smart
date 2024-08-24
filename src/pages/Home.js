@@ -24,7 +24,7 @@ function Home() {
       >
         <div className="mx-auto flex flex-col items-center justify-center">
 
-      <Navbar/>
+      {/* <Navbar/> */}
 
           {/* Static navbar */}
           <div className='max-w-[1360px] w-[95%] m-auto relative z-[1100] m-'>
@@ -32,7 +32,7 @@ function Home() {
           </div>
           
           {/* Hero Section */}
-          <div className="flex flex-wrap justify-between relative mx-auto pt-[70px] max-w-[1260px] w-11/12">
+          <div className="flex flex-wrap justify-between relative mx-auto md:pt-[70px] pt-0 max-w-[1260px] w-11/12">
             <div className="w-full lg:w-[50%] mt-1">
               <div className="pr-0 md:pr-8">
                 <h2 className="text-4xl flex flex-row roboto-thin text-[3.2rem] md:text-[4.37rem] font-bold leading-tight mb-10">

@@ -7,13 +7,13 @@ import Button from '../../ui/Button1'
 import { IoReorderThree } from "react-icons/io5";
 import Sidebar from './Sidebar'
 
-function StaticNavbar({margin, width}) {
+function StaticNavbar({margin, width,height}) {
 
   const [showSidebar,setShowSidebar] = useState(false)
 
   const navigate = useNavigate()
     return (
-      <div className={`max-w-[1360px] flex flex-row justify-center items-center z-[15]        h-[15.15vh] md:mt-${margin}`}>
+      <div className={`max-w-[1360px] flex flex-row justify-center items-center z-[15] h-${height}       md:h-[15.15vh] md:mt-${margin}`}>
         <div className='flex flex-row w-full mx-auto items-center justify-between'>
           
           {/* sidebar for sm screen */}
