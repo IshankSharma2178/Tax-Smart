@@ -309,3 +309,9 @@ strong {
 .background2 {
   background: linear-gradient(147deg, rgba(241, 157, 255, 1) 0%, rgba(245, 185, 183, 1) 43%, rgba(241, 157, 255, 1) 100%);
 }
+
+/* Services Card Bg */
+
+.background3 {
+  background: linear-gradient(30deg, var(--color-secondary) 20%, var(--color-primary) 80%);
+}

@@ -9,6 +9,8 @@ import Footer from "../component/common/Footer"
 import Button2 from '../ui/Button2';
 import ReviewSlider from '../component/Core/Homepage/ReviewSlider';
 import Navbar from '../component/common/Navbar';
+import AboutTaxSmart from '../component/Core/Homepage/AboutTaxSmart';
+import ServicesPage from '../component/Core/Homepage/ServicesPage';
 
 function Home() {
 
@@ -72,10 +74,14 @@ function Home() {
 
       </div>
 
+      {/* Service Section */}
+      <ServicesPage/>
+      {/* About TaxSmart */}
+      <AboutTaxSmart/>
 
       {/* Review Slider */}
-
       <ReviewSlider/>
+
       <Footer />
     </div>
   );

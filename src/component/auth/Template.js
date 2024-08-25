@@ -17,9 +17,9 @@ function Template({img1, img2,heading,subheading1,subheading2,formType}) {
         <div className='w-screen h-screen flex flex-row '>
           <div className='bg-[rgb(226,245,252)] w-[50%] h-screen flex  justify-end '>
             <div className=' mt-6 w-[600px]'>
-              <div className='text-[4rem] leading-none pl-10 text-[rgb(45,68,110)] font-bold'>
+              {/* <div className='text-[3rem] w-full leading-none pl-10 text-[rgb(45,68,110)] font-bold'>
                 Want to be Taxsmart?
-              </div>
+              </div> */}
               <div className=''>
                 <img src={LoginImg}/>
               </div>
