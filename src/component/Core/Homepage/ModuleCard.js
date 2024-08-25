@@ -16,6 +16,7 @@ import { MdArrowOutward } from "react-icons/md";
 function ModuleCard() {
 
 const details =[
+    
     {
         title:"Intro to Taxation System",
         description:"Unlock the essentials of India's Taxation System and discover the key differences between the Old and New tax regimes."
@@ -28,6 +29,15 @@ const details =[
         title:"Investment strategies",
         description:"Explore smart investment strategies that can secure your financial future, from pension schemes to mutual funds and beyond." 
     },
+    {
+        title:"Tax Filing Process",
+        description:"Navigate the tax filing process with ease by mastering the essential forms,calculations, and steps needed to accurately file your taxes." 
+    },
+    {
+        title:"Financial Management",
+        description:"Gain valuable insights into managing your money wisely with expert tips and lessons from influential financial books."
+    },
+    
 ]
 
   return (
@@ -64,7 +74,7 @@ const details =[
             <SwiperSlide key={i}>
             <div className="flex flex-col group hover:cursor-pointer rounded-lg px-8 pt-8 hover:h-[430px] transition-all duration-500 bg-white h-[400px] relative">
                 
-                <div className='opacity-0 group-hover:opacity-100 absolute transition-all duration-700 -right-2 group-hover:right-0'>
+                <div className='opacity-0 group-hover:opacity-100 absolute transition-all duration-700 -right-2 group-hover:right-0  drop-shadow-2xl'>
                     <img src={circularShape}/>
                 </div>
                 
@@ -85,7 +95,7 @@ const details =[
                                 <img src={Shape1} /> 
                             </div>
                             <div className='w-[5.5rem] absolute p-4 left-3 top-2 rounded-full  '>
-                                <img src={icon1} className='text-white w-[]'/>
+                                <img src={icon2} className='text-white w-[]'/>
                             </div>    
                         </div>    
                     }
@@ -95,7 +105,27 @@ const details =[
                                 <img src={Shape1} /> 
                             </div>
                             <div className='w-[5.5rem] absolute p-4 left-3 top-2 rounded-full  '>
-                                <img src={icon1} className='text-white w-[]'/>
+                                <img src={icon3} className='text-white w-[]'/>
+                            </div>    
+                        </div> 
+                    }
+                    { i ===3 &&
+                        <div className='relative '>
+                            <div className='absolute w-[7rem] '>
+                                <img src={Shape1} /> 
+                            </div>
+                            <div className='w-[5.5rem] absolute p-4 left-3 top-2 rounded-full  '>
+                                <img src={icon4} className='text-white w-[]'/>
+                            </div>    
+                        </div> 
+                    }
+                    { i === 4 &&
+                        <div className='relative '>
+                            <div className='absolute w-[7rem] '>
+                                <img src={Shape1} /> 
+                            </div>
+                            <div className='w-[5.5rem] absolute p-4 left-3 top-2 rounded-full  '>
+                                <img src={icon4} className='text-white w-[]'/>
                             </div>    
                         </div> 
                     }

@@ -32,7 +32,7 @@ function ReviewSlider() {
         </svg>
       </div>
       <div className="background1 relative">
-        <div className="max-w-[1260px] w-11/12 mx-auto h-[800px] md:h-[550px] relative">
+        <div className="max-w-[1260px] w-11/12 mx-auto h-[900px] md:h-[550px] relative pt-[4rem]">
           <div className='absolute size-[2.75rem] left-4 transition-all top-6 scale-animation'>
             <img src={cross} />
           </div>
