@@ -11,6 +11,7 @@ import ReviewSlider from '../component/Core/Homepage/ReviewSlider';
 import Navbar from '../component/common/Navbar';
 import AboutTaxSmart from '../component/Core/Homepage/AboutTaxSmart';
 import ServicesPage from '../component/Core/Homepage/ServicesPage';
+import Modules from '../component/Core/Homepage/Modules';
 
 function Home() {
 
@@ -73,6 +74,9 @@ function Home() {
         </div>
 
       </div>
+
+      {/* MOdules Section */}
+      <Modules/>
 
       {/* Service Section */}
       <ServicesPage/>

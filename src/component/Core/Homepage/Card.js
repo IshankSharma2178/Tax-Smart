@@ -60,8 +60,6 @@ function Card() {
                             </div>
                         </div>
                     </div>
-
-                
                 </div>
             </SwiperSlide>
           )

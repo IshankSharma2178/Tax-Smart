@@ -61,6 +61,21 @@
   animation: bounce2 5s infinite;
 }
 
+@keyframes bounce2 {
+  0%, 100% {
+      transform: translateY(0);
+      animation-timing-function: ease-in-out;
+  }
+  50% {
+      transform: translateY(-20%);
+      animation-timing-function: ease-in-out;
+  }
+}
+
+.animate-bounce2 {
+  animation: bounce2 5s infinite;
+}
+
 .shadow-image {
   filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5)); 
 }
@@ -314,4 +329,10 @@ strong {
 
 .background3 {
   background: linear-gradient(30deg, var(--color-secondary) 20%, var(--color-primary) 80%);
+}
+
+
+/* modules background-shadow */
+.shadow{
+  box-shadow: rgba(5, 20, 229, 0.25) 0px 25px 50px -1px;
 }
