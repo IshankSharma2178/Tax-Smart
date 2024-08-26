@@ -6,10 +6,16 @@ import "swiper/css/pagination"
 import 'swiper/css/navigation';
 import { Autoplay, FreeMode, Navigation, Pagination } from 'swiper/modules'
 import icon1 from "../../../assets/img/icon/start-up.png"
-import icon2 from "../../../assets/img/icon/start-up1.png"
+import icon2 from "../../../assets/img/icon/start-up (1).png"
 import icon3 from "../../../assets/img/icon/start-up2.png"
 import icon4 from "../../../assets/img/icon/start-up3.png"
+import icon5 from "../../../assets/img/icon/start-up4.png"
+
 import Shape1 from "../../../assets/img/shape/Shape1.svg" 
+import Shape2 from "../../../assets/img/shape/Shape2.svg" 
+import Shape3 from "../../../assets/img/shape/Shape3.svg"
+import Shape4 from "../../../assets/img/shape/Shape4.svg" 
+
 import circularShape from "../../../assets/img/shape/30.png"
 import { MdArrowOutward } from "react-icons/md";
 
@@ -74,7 +80,7 @@ const details =[
             <SwiperSlide key={i}>
             <div className="flex flex-col group hover:cursor-pointer rounded-lg px-8 pt-8 hover:h-[430px] transition-all duration-500 bg-white h-[400px] relative">
                 
-                <div className='opacity-0 group-hover:opacity-100 absolute transition-all duration-700 -right-2 group-hover:right-0  drop-shadow-2xl'>
+                <div className='opacity-0 group-hover:opacity-100 absolute transition-all duration-700 -right-8 group-hover:right-0  drop-shadow-2xl'>
                     <img src={circularShape}/>
                 </div>
                 
@@ -92,7 +98,7 @@ const details =[
                     { i === 1 &&
                         <div className='relative '>
                             <div className='absolute w-[7rem] '>
-                                <img src={Shape1} /> 
+                                <img src={Shape2} /> 
                             </div>
                             <div className='w-[5.5rem] absolute p-4 left-3 top-2 rounded-full  '>
                                 <img src={icon2} className='text-white w-[]'/>
@@ -102,7 +108,7 @@ const details =[
                     { i === 2 &&
                         <div className='relative '>
                             <div className='absolute w-[7rem] '>
-                                <img src={Shape1} /> 
+                                <img src={Shape3} /> 
                             </div>
                             <div className='w-[5.5rem] absolute p-4 left-3 top-2 rounded-full  '>
                                 <img src={icon3} className='text-white w-[]'/>
@@ -112,7 +118,7 @@ const details =[
                     { i ===3 &&
                         <div className='relative '>
                             <div className='absolute w-[7rem] '>
-                                <img src={Shape1} /> 
+                                <img src={Shape4} /> 
                             </div>
                             <div className='w-[5.5rem] absolute p-4 left-3 top-2 rounded-full  '>
                                 <img src={icon4} className='text-white w-[]'/>
@@ -125,7 +131,7 @@ const details =[
                                 <img src={Shape1} /> 
                             </div>
                             <div className='w-[5.5rem] absolute p-4 left-3 top-2 rounded-full  '>
-                                <img src={icon4} className='text-white w-[]'/>
+                                <img src={icon5} className='text-white w-[]'/>
                             </div>    
                         </div> 
                     }
@@ -137,8 +143,8 @@ const details =[
                 <div className='text-richblack-200 text-sm leading-loose'>
                     {data.description}
                 </div>  
-                <div className='mt-4 text-start'>
-                    <button className='transform flex flex-row items-center gap-2 translate-x-0 opacity-0 group-hover:translate-x-4 group-hover:opacity-100 group-hover:underline transition-all duration-500 text-blue-500 mt-4'>
+                <div className='mt-4 text-start  '>
+                    <button className='transform font-bold flex border-b border-b-richblack-300 pl-4 hover:border-b-blue-500 flex-row items-center gap-2 translate-x-0 opacity-0 group-hover:translate-x-4 uppercase group-hover:opacity-100  transition-all duration-500 hover:text-blue-500 text-richblack-300 mt-4'>
                         {"    "}Read more
                         <MdArrowOutward />
                     </button>
