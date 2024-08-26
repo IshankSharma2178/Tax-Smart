@@ -12,6 +12,7 @@ import Navbar from '../component/common/Navbar';
 import AboutTaxSmart from '../component/Core/Homepage/AboutTaxSmart';
 import ServicesPage from '../component/Core/Homepage/ServicesPage';
 import Modules from '../component/Core/Homepage/Modules';
+import Image from "../assets/img/icon/graphic2.svg"
 
 function Home() {
 
@@ -28,8 +29,7 @@ function Home() {
         <div className="mx-auto flex flex-col items-center justify-center">
 
       {/* <Navbar/> */}
-
-          {/* Static navbar */}
+        {/* Static navbar */}
           <div className='max-w-[1360px] w-[95%] m-auto relative z-[1100] m-'>
             <StaticNavbar margin={"8"} />
           </div>

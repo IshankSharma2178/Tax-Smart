@@ -3,13 +3,13 @@ import SignupForm from "./SignupForm"
 import StaticNavbar from "../common/StaticNavbar"
 import LoginForm from './LoginForm'
 
-function Template({img1, img2,heading,subheading1,subheading2,formType}) {
+function Template({img1, heading,subheading1,subheading2,formType}) {
 
   const [loading,setLoading] = useState(false)
 
   return (
     
-    <div className=" ">
+    <div className="background2 ">
       <div className='max-w-[1360px] w-[95%] m-auto relative z-[1100] mx-auto'>
         <StaticNavbar margin={"8"} />
       </div>
@@ -17,7 +17,7 @@ function Template({img1, img2,heading,subheading1,subheading2,formType}) {
         <div className="spinner"></div>
       ) : (
         <div className="mx-auto flex w-11/12 max-w-[1360px] mx-auto flex-col justify-between gap-y-12 py-12 md:flex-row md:gap-y-0 md:gap-x-12">
-          <div className="mx-auto w-full md:w-11/12 md:max-w-[450px] md:mx-0">
+          <div className="mx-auto w-full md:w-11/12 md:max-w-[450px] md:mx-0 mt-2">
             <h1 className="text-[1.875rem] font-semibold leading-[2.375rem] text-richblack-5">
               {heading}
             </h1>
@@ -29,29 +29,26 @@ function Template({img1, img2,heading,subheading1,subheading2,formType}) {
             </p>
             {formType === "signup" ? <SignupForm /> : <LoginForm />}
           </div>
-          <div className="relative  max-w-[600px] md:mx-0">
-            {/* <img
-              src={img2}
-              alt="Pattern"
-              width={558}
-              height={504}
-              loading="lazy"
-            />
-            <img
-              src={img1}
-              alt="Students"
-              width={558}
-              height={504}
-              loading="lazy"
-              className="absolute -top-4 right-4 z-10"
-            /> */}
-
-            <img  
-              alt='logo-image'
-              loading="lazy"
-              src={img1}
-            />
-          </div>
+          {
+            formType === "signup" &&
+            (<div className="relative  max-w-[600px] md:mx-0">
+              <img  
+                alt='logo-image'
+                loading="lazy"
+                src={img1}
+              />
+            </div>)
+          }
+          {
+            formType === "login" &&
+            (<div className="max-w-[600px] -translate-y-12">
+              <img  
+                alt='logo-image'
+                loading="lazy"
+                src={img1}
+              />
+            </div>)
+          }
         </div>
       )}
     </div>
