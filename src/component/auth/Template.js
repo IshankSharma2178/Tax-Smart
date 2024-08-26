@@ -41,7 +41,7 @@ function Template({img1, heading,subheading1,subheading2,formType}) {
           }
           {
             formType === "login" &&
-            (<div className="max-w-[600px] -translate-y-12">
+            (<div className="max-w-[550px] -translate-y-12">
               <img  
                 alt='logo-image'
                 loading="lazy"
