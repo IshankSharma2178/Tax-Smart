@@ -9,15 +9,15 @@ function Template({img1, heading,subheading1,subheading2,formType}) {
 
   return (
     
-    <div className="background2 ">
+    <div className="background4 ">
       <div className='max-w-[1360px] w-[95%] m-auto relative z-[1100] mx-auto'>
         <StaticNavbar margin={"8"} />
       </div>
       {loading ? (
         <div className="spinner"></div>
       ) : (
-        <div className="mx-auto flex w-11/12 max-w-[1360px] mx-auto flex-col justify-between gap-y-12 py-12 md:flex-row md:gap-y-0 md:gap-x-12">
-          <div className="mx-auto w-full md:w-11/12 md:max-w-[450px] md:mx-0 mt-2">
+        <div className="mx-auto flex w-11/12 max-w-[1360px] mx-auto flex-col justify-between gap-y-12 pt-4 pb-12 md:flex-row md:gap-y-0 md:gap-x-12">
+          <div className="mx-auto w-full md:w-11/12 md:max-w-[450px] md:mx-0 ">
             <h1 className="text-[1.875rem] font-semibold leading-[2.375rem] text-richblack-5">
               {heading}
             </h1>
@@ -41,7 +41,7 @@ function Template({img1, heading,subheading1,subheading2,formType}) {
           }
           {
             formType === "login" &&
-            (<div className="max-w-[550px] -translate-y-12">
+            (<div className="max-w-[550px] ">
               <img  
                 alt='logo-image'
                 loading="lazy"

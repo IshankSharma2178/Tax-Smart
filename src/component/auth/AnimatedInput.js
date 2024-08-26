@@ -1,12 +1,30 @@
 import React, { useState } from 'react';
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 
 const AnimatedInput = ({ label, name, register, required, errors,type }) => {
 
     const [password,setPassword] = useState(false);
+    const [passwordVisibility, setPasswordVisibility] = useState({ password: false, confirmPassword: false });
+
+    const togglePasswordVisibility = (field) => {
+      setPasswordVisibility(prev => ({
+        ...prev,
+        [field]: !prev[field]
+      }));
+    };
+
+    if(name === 'password' ){
+      type = passwordVisibility["password"];
+    }
+
+    if(name ==="confirmPassword"){
+      type = passwordVisibility["confirmPassword"];
+    }
+
   return (
     <div className="relative mb-12">
       <input
-        type={type}
+        type={type ? "text":"password"}
         name={name}
         id={name}
         autoComplete="off"
@@ -23,6 +41,20 @@ const AnimatedInput = ({ label, name, register, required, errors,type }) => {
       >
         {label}
       </label>
+      {
+        name === "password" &&
+        <div className='absolute text-richblack-25 right-3 cursor-pointer -translate-y-9 text-2xl'
+                        onClick={()=>togglePasswordVisibility("password")}>
+                        {passwordVisibility["password"]===true? <AiOutlineEye/>:<AiOutlineEyeInvisible/>}
+        </div>
+      }
+      {
+        name === "confirmPassword" &&
+        <div className='absolute text-richblack-25 right-3 cursor-pointer -translate-y-9 text-2xl'
+                        onClick={()=>togglePasswordVisibility("confirmPassword")}>
+                        {passwordVisibility["confirmPassword"]===true? <AiOutlineEye/>:<AiOutlineEyeInvisible/>}
+        </div>
+      }
       <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-blue-500 transition-all duration-300 peer-focus:w-full"></span>
       {errors[name] && (
         <span className="text-pink-200 text-sm">{errors[name]?.message || `Please enter ${label}`}</span>

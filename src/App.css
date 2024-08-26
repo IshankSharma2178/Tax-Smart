@@ -308,10 +308,7 @@ strong {
 /* Login Page Background */
 .background4{
 
-  background: #ffefba; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #ffefba, #ffffff);   /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #ffefba, #ffffff); 
-  
+  background: linear-gradient(to right, #b6fbff, #83a4d4);
 }
 /* cross animation */
 

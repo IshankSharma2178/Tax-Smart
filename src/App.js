@@ -11,6 +11,8 @@ import About from './pages/About';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import TopNavigationButton from './component/common/TopNavigationButton';
+import VerifyEmail from './pages/VerifyEmail';
+import ModulesPage from './pages/ModulesPage';
 
 function App() {
   return (
@@ -23,9 +25,10 @@ function App() {
         <Route path="/modules" element={<Modules />} />
         <Route path="/about" element={<About />} />
         {/* <Route path="*" element={<Error />} /> */}
+        <Route path='/verify-email' element={<VerifyEmail />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/modules" element={<ModulesPage />} />
         <Route path="/signup" element={<Signup />} />
-
       </Routes>
       
     </div>
