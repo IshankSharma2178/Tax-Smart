@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const AnimatedInput = ({ label, name, register, required, errors,type }) => {
+
+    const [password,setPassword] = useState(false);
   return (
     <div className="relative mb-12">
       <input
-        type="text"
+        type={type }
         name={name}
         id={name}
         autoComplete="off"

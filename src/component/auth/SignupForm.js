@@ -45,7 +45,7 @@ function SignupForm() {
           <AnimatedInput errors={errors} type="password" label="Create Password" name="password" register={register} required={true} />
           </div>
           <div className='flex flex-col w-[50%] relative'>
-          <AnimatedInput errors={errors} label="Confirm Password" name="confirmPassword" register={register} required={true} />
+          <AnimatedInput errors={errors} type="password" label="Confirm Password" name="confirmPassword" register={register} required={true} />
           </div>
         </div>
 
