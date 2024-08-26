@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import SignupForm from "./SignupForm"
 import LoginForm from './LoginForm'
 import StaticNavbar from '../common/StaticNavbar'
-import LoginImg from "../../assets/img/LoginImg.png"
+import SignupImg from "../../assets/img/LoginImg.png"
+import LoginImg from "../../assets/img/Login.png"
 
 function Template({img1, img2,heading,subheading1,subheading2,formType}) {
 
@@ -20,8 +21,11 @@ function Template({img1, img2,heading,subheading1,subheading2,formType}) {
               {/* <div className='text-[3rem] w-full leading-none pl-10 text-[rgb(45,68,110)] font-bold'>
                 Want to be Taxsmart?
               </div> */}
-              <div className=''>
-                <img src={LoginImg}/>
+              <div className='my-auto'>
+                {
+                  formType === "signup"?
+                  (<img src={SignupImg}/>): (<img src={LoginImg}/>)
+                }
               </div>
             </div>
           </div>
