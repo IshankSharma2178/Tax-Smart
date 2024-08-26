@@ -6,7 +6,7 @@ const AnimatedInput = ({ label, name, register, required, errors,type }) => {
   return (
     <div className="relative mb-12">
       <input
-        type={type }
+        type={type}
         name={name}
         id={name}
         autoComplete="off"

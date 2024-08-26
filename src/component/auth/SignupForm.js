@@ -38,7 +38,7 @@ function SignupForm() {
           <AnimatedInput errors={errors} type="text" label="First Name" name="firstname" register={register} required={true} />
           <AnimatedInput errors={errors} type="text" label="Last Name" name="lastname" register={register} required={true} />
         </div>
-        <AnimatedInput errors={errors} type="email" label="Email Address" name="emailAddress" register={register} required={true} />
+        <AnimatedInput errors={errors} type="text" label="Email Address" name="emailAddress" register={register} required={true} />
         
         <div className='flex flex-row w-[100%] gap-4'>
           <div className='flex flex-col w-[50%] relative'>
@@ -58,8 +58,7 @@ function SignupForm() {
 
         <button
           type="submit"
-          className={`text-center text-[20px] font-medium text-nowrap px-5 py-2 rounded-md bg-yellow-50 w-full text-richblack-900 
-                        shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] hover:shadow-none hover:scale-95 transition-all duration-200`}
+          className="bg-blue-500 text-white py-2 px-4 rounded shadow-md mr-4 transition-transform hover:scale-95"
         >
           Create Account
         </button>
