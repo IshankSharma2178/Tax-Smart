@@ -305,6 +305,10 @@ strong {
 
 }
 
+.background4{
+  background: linear-gradient(to right, #86fde8, #acb6e5);
+}
+
 /* cross animation */
 
 @keyframes scaleInOut {
