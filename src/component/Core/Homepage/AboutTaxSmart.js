@@ -11,9 +11,9 @@ function AboutTaxSmart() {
         <div className='w-[50%] pt-8 m-auto'>
             <img src={Image}/>
         </div>
-        <div className='w-[50%] m-auto flex  flex-col gap-6'>
-            <div className='text-[3rem] text-[#3f1399] font-bold'>About TaxSmart…</div>
-            <div className='text-richblack-500 text-lg '>TaxSmart is an innovative platform designed to empower individuals and businesses to 
+        <div className='w-[50%] m-auto flex  flex-col gap-6 pt-16'>
+            <div className='text-[3rem] text-[#3f1399] font-bold '>About TaxSmart…</div>
+            <div className='text-richblack-500 text-lg w-[80%] '>TaxSmart is an innovative platform designed to empower individuals and businesses to 
                 master Indian taxations and optimize their financial well-being. Our mission is to 
                 provide comprehensive tax knowledge, expert insights, and practical tools to help users 
                 navigate the complex world of taxation with confidence </div>
