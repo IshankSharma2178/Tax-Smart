@@ -300,13 +300,13 @@ strong {
 /* review background color  */
 
 .background1 {
-  background: linear-gradient(to right, #A6FFCB, #12D8FA, #1FA2FF); 
+  background: linear-gradient(to right, #26a0da, #314755);
   width: 100%;
 
 }
 
 .background4{
-  background: linear-gradient(to right, #86fde8, #acb6e5);
+  background: linear-gradient(to right, #26a0da, #314755); 
 }
 
 /* cross animation */
