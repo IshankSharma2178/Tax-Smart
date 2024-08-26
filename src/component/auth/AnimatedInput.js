@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AnimatedInput = ({ label, name, register, required, errors }) => {
+const AnimatedInput = ({ label, name, register, required, errors,type }) => {
   return (
     <div className="relative mb-12">
       <input
@@ -17,7 +17,7 @@ const AnimatedInput = ({ label, name, register, required, errors }) => {
         className={`absolute cursor-text left-1 top-2 text-gray-400 transition-all duration-300 transform 
         peer-placeholder-shown:top-2 peer-placeholder-shown:text-lg 
         peer-focus:-translate-y-6 peer-focus:scale-90 peer-focus:text-blue-500
-        peer-not-placeholder-shown:-translate-y-6 peer-not-placeholder-shown:scale-90 peer-not-placeholder-shown:text-blue-500`}
+        peer-valid:-translate-y-6 peer-valid:scale-90 peer-valid:text-blue-500`}
       >
         {label}
       </label>

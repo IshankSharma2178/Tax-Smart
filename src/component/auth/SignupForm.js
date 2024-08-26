@@ -35,14 +35,14 @@ function SignupForm() {
       </div>
       <form onSubmit={handleSubmit(submitHandler)} className='flex flex-col gap-4'>
         <div className='flex flex-row w-[100%] gap-4'>
-          <AnimatedInput errors={errors} label="First Name" name="firstname" register={register} required={true} />
-          <AnimatedInput errors={errors} label="Last Name" name="lastname" register={register} required={true} />
+          <AnimatedInput errors={errors} type="text" label="First Name" name="firstname" register={register} required={true} />
+          <AnimatedInput errors={errors} type="text" label="Last Name" name="lastname" register={register} required={true} />
         </div>
-        <AnimatedInput errors={errors} label="Email Address" name="emailAddress" register={register} required={true} />
+        <AnimatedInput errors={errors} type="email" label="Email Address" name="emailAddress" register={register} required={true} />
         
         <div className='flex flex-row w-[100%] gap-4'>
           <div className='flex flex-col w-[50%] relative'>
-          <AnimatedInput errors={errors} label="Create Password" name="password" register={register} required={true} />
+          <AnimatedInput errors={errors} type="password" label="Create Password" name="password" register={register} required={true} />
           </div>
           <div className='flex flex-col w-[50%] relative'>
           <AnimatedInput errors={errors} label="Confirm Password" name="confirmPassword" register={register} required={true} />
