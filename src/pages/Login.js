@@ -4,20 +4,6 @@ function Login() {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-800">
     <form className="w-80">
-      <h1 className="text-3xl font-light text-center text-blue-500 mb-4">Material Inputs</h1>
-      <h5 className="text-center text-gray-400 uppercase mb-8">
-        Inspired by Google's Material Design guidelines for text fields
-      </h5>
-      <div className="text-center mb-8">
-        <a
-          className="inline-block py-2 px-4 bg-blue-500 text-white rounded shadow-md transition-transform hover:scale-105"
-          href="https://material.google.com/components/text-fields.html"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Design Docs
-        </a>
-      </div>
       <hr className="border-blue-500 mx-auto w-1/4 mb-8" />
       {['Name', 'Email', 'Password', 'Number', 'Message'].map((label, index) => (
         <div key={index} className="relative mb-12">
@@ -39,15 +25,7 @@ function Login() {
         >
           Submit
         </button>
-        <button
-          type="button"
-          className="bg-gray-200 text-gray-800 py-2 px-4 rounded shadow-md transition-transform hover:scale-105"
-        >
-          Cancel
-        </button>
-        <h5 className="text-gray-400 mt-4">
-          *these buttons do nothing <span className="text-lg">😉</span>
-        </h5>
+
       </div>
     </form>
   </div>
