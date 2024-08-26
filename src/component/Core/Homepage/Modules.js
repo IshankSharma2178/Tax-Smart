@@ -17,7 +17,7 @@ function Modules() {
         <div className='flex flex-col gap-8'>
             <div className='text-center'>
                 <p className='text-richblack-25 text-xl font-semibold'>What We Do</p>
-                <p className='text-white text-[3rem] font-bold'>Our Digital Solutions</p>
+                <p className='text-white text-[3rem] font-bold'>Discover Your Personalized Tax Solution</p>
             </div>
             <div className='flex flex-row w-full max-w-[100px] mx-auto gap-3'>
                 <p className='w-1/4 border-b-[2px]  border-b-richblack-5'></p>

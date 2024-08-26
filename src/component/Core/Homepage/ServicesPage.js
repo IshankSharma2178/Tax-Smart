@@ -23,8 +23,8 @@ function ServicesPage() {
       {/* Main content */}
       <div className='relative z-10 max-w-[1260px] mx-auto py-[8rem] w-11/12'>
         <div className='grid grid-cols-2 grid-rows-2 gap-8'>
-          <div className='w-[75%] flex flex-col justify-center gap-4'>
-            <p className='text-[2.75rem] font-bold'>Best Solutions SEO & Marketing for Business</p>
+          <div className='w-[78%] flex flex-col justify-center gap-4'>
+            <p className='text-[2.75rem] font-bold'>Uncover the Unique Features Designed Just for You</p>
             <div className='w-fit' onClick={()=>navigate("/login")}>
                 <Button text={"Explore Now"}/>
             </div>
