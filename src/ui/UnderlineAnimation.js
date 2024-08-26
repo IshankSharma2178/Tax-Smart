@@ -6,7 +6,7 @@ const UnderlineAnimation = ({text}) => {
       <li className="">
         <a
           href="#0"
-          className="relative block py-[0.2em] overflow-hidden before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-full before:h-[0.1em] before:bg-pink-200 before:opacity-100 before:translate-x-[-100%] before:transition before:duration-300 hover:before:translate-x-0"
+          className="relative block py-[0.2em] overflow-hidden text-[#00003f] dm-serif-text-regular before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-full before:h-[0.1em] before:bg-pink-200 before:opacity-100 before:translate-x-[-100%] before:transition before:duration-300 hover:before:translate-x-0"
         >
           {text}
         </a>

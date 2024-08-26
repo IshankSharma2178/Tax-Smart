@@ -33,7 +33,7 @@ function StaticNavbar({margin, width,height}) {
             {NavbarLinks.map((links, key) => (
               <div key={key}>
                 <NavLink to={links.path}>
-                  <UnderlineAnimation text={links.title} />
+                  <UnderlineAnimation  text={links.title} />
                 </NavLink>
               </div>
             ))}

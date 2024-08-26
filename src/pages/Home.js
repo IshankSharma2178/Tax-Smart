@@ -22,8 +22,8 @@ function Home() {
 
       {/* Section - 1 */}
       <div
-        className="bg-cover bg-no-repeat bg-center background4 pb-[100px] mx-auto relative"
-        // style={{ backgroundImage: `url(${banner})` }}
+        className="bg-cover bg-no-repeat bg-center pb-[100px] mx-auto relative"
+        style={{ backgroundImage: `url(${banner})` }}
       >
         <div className="mx-auto flex flex-col items-center justify-center">
 
