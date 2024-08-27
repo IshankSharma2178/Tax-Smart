@@ -21,7 +21,7 @@ function ModulesPage({ModuleName,Description,noOfModules , index}) {
                 </div>
                 <div className="flex items-center text-gray-600 mt-2">
                     <span className="mr-2">📚 Course</span>
-                    <span className="mr-2">⏰ {noOfModules}</span>
+                    <span className="mr-2">⏰ {noOfModules} Topics</span>
                     <span>🌟 Introductory</span>
                 </div>
                 <p className="text-richblack-600 mt-4 tracking-wide text-sm">
