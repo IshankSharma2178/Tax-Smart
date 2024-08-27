@@ -9,7 +9,7 @@ function Template({img1, heading,subheading1,subheading2,formType}) {
 
   return (
     
-    <div className="background4 ">
+    <div className="background4 min-h-[120vh] ">
       <div className='max-w-[1360px] w-[95%] m-auto relative z-[1100] mx-auto'>
         <StaticNavbar margin={"8"} />
       </div>

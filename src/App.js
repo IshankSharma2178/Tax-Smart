@@ -27,7 +27,7 @@ function App() {
         {/* <Route path="*" element={<Error />} /> */}
         <Route path='/verify-email' element={<VerifyEmail />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/modules" element={<ModulesPage />} />
+        <Route path="/modules" element={<Modules />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>
       

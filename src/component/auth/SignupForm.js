@@ -46,7 +46,7 @@ function SignupForm() {
       <div className='text-[#456297] text-xl'>
       Upgrade Yourself for today, tomorrow, and beyond. {" "}
       </div>
-      <form onSubmit={handleSubmit(submitHandler)} className='flex flex-col gap-4'>
+      <form onSubmit={handleSubmit(submitHandler)} className='flex flex-col gap-3'>
         <div className='flex flex-row w-[100%] gap-4'>
           <AnimatedInput errors={errors} type="text" label="First Name" name="firstName" register={register} required={true} />
           <AnimatedInput errors={errors} type="text" label="Last Name" name="lastName" register={register} required={true} />

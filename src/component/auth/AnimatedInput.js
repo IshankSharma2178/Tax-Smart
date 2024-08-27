@@ -43,14 +43,14 @@ const AnimatedInput = ({ label, name, register, required, errors,type }) => {
       </label>
       {
         name === "password" &&
-        <div className='absolute text-richblack-25 right-3 cursor-pointer -translate-y-9 text-2xl'
+        <div className='absolute text-richblack-800 right-3 cursor-pointer -translate-y-9 text-2xl'
                         onClick={()=>togglePasswordVisibility("password")}>
                         {passwordVisibility["password"]===true? <AiOutlineEye/>:<AiOutlineEyeInvisible/>}
         </div>
       }
       {
         name === "confirmPassword" &&
-        <div className='absolute text-richblack-25 right-3 cursor-pointer -translate-y-9 text-2xl'
+        <div className='absolute text-richblack-800 right-3 cursor-pointer -translate-y-9 text-2xl'
                         onClick={()=>togglePasswordVisibility("confirmPassword")}>
                         {passwordVisibility["confirmPassword"]===true? <AiOutlineEye/>:<AiOutlineEyeInvisible/>}
         </div>

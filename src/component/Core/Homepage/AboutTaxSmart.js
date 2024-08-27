@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from "../../../assets/img/gallery/Image1.png"
 import CircularShape from "../../../assets/img/shape/20.png"
+import dots from "../../../assets/img/shape/4.png"
 
 function AboutTaxSmart() {
   return (
@@ -8,8 +9,11 @@ function AboutTaxSmart() {
         <div className='absolute right-0 -top-8'>
             <img src={CircularShape} />
         </div>
-        <div className='w-[50%] pt-8 m-auto'>
+        <div className='w-[50%] pt-8 m-auto relative'>
             <img src={Image}/>
+            <div className='absolute -left-[5rem]'>
+              <img src={dots} />
+            </div>
         </div>
         <div className='w-[50%] m-auto flex  flex-col gap-6 pt-16'>
             <div className='text-[3rem] text-[#3f1399] font-bold '>About TaxSmart…</div>
