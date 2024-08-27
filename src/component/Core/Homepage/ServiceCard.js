@@ -3,8 +3,8 @@ import { BsPinAngle } from "react-icons/bs";
 
 function ServiceCard({ heading, subHeading, features, image }) {
   return (
-    <div className='group bg-white flex px-14 pt-16 pb-16 gap-4 flex-row w-full max-h-[400px] shadow-xl hover:background3 transition-all duration-300'>
-      <div className='w-[16rem]'>
+    <div className='group bg-white flex px-14 pt-16 pb-16 gap-4 flex-col md:flex-row w-full min-h-[400px] shadow-xl hover:background3 transition-all duration-300'>
+      <div className='w-[5rem] md:w-[16rem]'>
         <img src={image} alt="Service" className=''/>
       </div>
       <div className='flex flex-col gap-4'>

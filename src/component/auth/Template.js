@@ -31,7 +31,7 @@ function Template({img1, heading,subheading1,subheading2,formType}) {
           </div>
           {
             formType === "signup" &&
-            (<div className="relative  max-w-[600px] md:mx-0">
+            (<div className="relative md:flex hidden max-w-[600px] md:mx-0">
               <img  
                 alt='logo-image'
                 loading="lazy"
@@ -41,7 +41,7 @@ function Template({img1, heading,subheading1,subheading2,formType}) {
           }
           {
             formType === "login" &&
-            (<div className="max-w-[550px] ">
+            (<div className="max-w-[550px] md:flex hidden">
               <img  
                 alt='logo-image'
                 loading="lazy"
