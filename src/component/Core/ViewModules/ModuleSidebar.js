@@ -13,8 +13,10 @@ function ModuleSidebar() {
     const [loading, setLoading] = useState(false);
     const { selectedModule } = useSelector((state) => state.module);
     const [sidebarData, setSidebarData] = useState([]);
+    const [activeIndex, setActiveIndex] = useState(null);
+    const [activeContent, setActiveContent] = useState(null);
+    const [activeQuiz, setActiveQuiz] = useState(null);
     const navigate = useNavigate();
-    const [openDropdowns, setOpenDropdowns] = useState({}); 
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -34,19 +36,23 @@ function ModuleSidebar() {
     const ContentClickHandler = (content) => {
         dispatch(setQuiz(null));
         dispatch(setContent(content));
+        setActiveContent(content);
+        setActiveQuiz(null);
     }
 
-    const QuizHandler = (quizData)=>{
-        console.log("1234 ",quizData);
+    const QuizHandler = (quizData) => {
         dispatch(setContent(null));
         dispatch(setQuiz(quizData));
+        setActiveContent(null);
+        setActiveQuiz(quizData);
     }
- 
+
     const toggleDropdown = (index) => {
-        setOpenDropdowns((prevState) => ({
-            ...prevState,
-            [index]: !prevState[index],
-        }));
+        if (activeIndex === index) {
+            setActiveIndex(null);
+        } else {
+            setActiveIndex(index);
+        }
     };
 
     return (
@@ -56,9 +62,7 @@ function ModuleSidebar() {
             ) : (
                 <div>
                     <div
-                        onClick={() => {
-                            navigate("/modules");
-                        }}
+                        onClick={() => navigate("/modules")}
                         className="flex items-center space-x-2 cursor-pointer mb-4 text-blue-500"
                     >
                         <IoIosArrowBack size={20} />
@@ -78,18 +82,24 @@ function ModuleSidebar() {
                     {sidebarData.map((data, index) => (
                         <div key={index} className="flex flex-col mb-2">
                             <button 
-                                className="flex justify-between items-center w-full text-left font-medium py-2 hover:bg-gray-100 px-2 rounded-lg" 
+                                className={`flex justify-between items-center  w-full text-left font-medium py-2 px-2 rounded-lg hover:bg-gray-100 ${activeIndex === index ? 'bg-blue-25' : 'hover:bg-blue-5 '}`} 
                                 onClick={() => toggleDropdown(index)}
                             >
                                 {data.title}
                                 <IoIosArrowForward size={16} className="text-gray-400" />
                             </button>
-                            {openDropdowns[index] && (               
-                                <div className="ml-4 mt-2">
-                                    <button onClick={() => ContentClickHandler(data.content)} className="cursor-pointer hover:text-blue-500">
+                            {activeIndex === index && (               
+                                <div className="ml-4 mt-2 flex flex-col space-y-2">
+                                    <button 
+                                        onClick={() => ContentClickHandler(data.content)} 
+                                        className={`cursor-pointer px-2 py-1 rounded-lg ${activeContent === data.content ? 'bg-yellow-25' : 'hover:bg-yellow-5'}`}
+                                    >
                                         Content
                                     </button>
-                                    <button onClick={()=>QuizHandler(data.quiz)} className="cursor-pointer hover:text-blue-500">
+                                    <button 
+                                        onClick={() => QuizHandler(data.quiz)} 
+                                        className={`cursor-pointer px-2 py-1 rounded-lg ${activeQuiz === data.quiz ? 'bg-yellow-25' : 'hover:bg-yellow-5'}`}
+                                    >
                                         Quiz
                                     </button>
                                 </div>
