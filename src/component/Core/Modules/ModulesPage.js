@@ -1,9 +1,23 @@
 import React from 'react'
-import banner from "../assets/img/banner/8.jpg"
-import { FaArrowRight } from 'react-icons/fa6'
-import Button1 from '../component/common/UI/Button1'
+import banner from "../../../assets/img/banner/8.jpg"
+import Button1 from '../../common/UI/Button1'
+import { useNavigate } from 'react-router'
+import { useDispatch } from 'react-redux';
+import { setContent, setSelectedModule } from '../../../slices/ModuleSlice';
 
-function ModulesPage({ModuleName,Description,noOfModules , index}) {
+function ModulesPage({ModuleName,Description,noOfModules ,link, index}) {
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+
+  const clickHandler = () =>{
+    console.log('clickHandler');
+    dispatch(setContent(null))
+    navigate(`/view-Modules/${link}`)
+    dispatch(setSelectedModule(link))
+  }
+
   return (
     <div className=''>
        <div className="max-w-[22rem] rounded-lg m-auto mt-10  overflow-hidden shadow-sm border border-richblack-25">
@@ -28,7 +42,7 @@ function ModulesPage({ModuleName,Description,noOfModules , index}) {
                     {Description}
                 </p>
                 <div className='mt-6'>
-                  <Button1 icon={"FaArrowRight"} text={"Start course"} >
+                  <Button1 icon={"FaArrowRight"} text={"Start course"} onCLick={()=>clickHandler()} >
                   </Button1>
                 </div>
             </div>

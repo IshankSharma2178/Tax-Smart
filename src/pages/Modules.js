@@ -1,5 +1,5 @@
 import React from 'react'
-import ModulesPage from './ModulesPage'
+import ModulesPage from '../component/Core/Modules/ModulesPage'
 import StaticNavbar from "../component/common/StaticNavbar"
 import {ModulesCardData} from "../data/ModulesCardData"
 
@@ -14,7 +14,7 @@ function Modules() {
           { 
             ModulesCardData.map((data,index)=>(
               <div className=''>
-                <ModulesPage ModuleName={data.ModuleName} Description={data.Description} noOfModules={data.noOfModules} index={index} />
+                <ModulesPage ModuleName={data.ModuleName} link={data.link} Description={data.Description} noOfModules={data.noOfModules} index={index} />
               </div>
 
             ))

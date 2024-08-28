@@ -1,7 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Navbar from './component/common/Navbar';
 import { Route, Routes } from 'react-router';
 import Home from './pages/Home';
 import Ai from './AI/Ai';
@@ -12,7 +10,9 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import TopNavigationButton from './component/common/TopNavigationButton';
 import VerifyEmail from './pages/VerifyEmail';
-import ModulesPage from './pages/ModulesPage';
+import ViewModules from './pages/ViewModules';
+import PrivateRoute from './component/auth/PrivateRoute';
+import ViewModuleData from './component/Core/ViewModules/ViewModuleData';
 
 function App() {
   return (
@@ -27,10 +27,24 @@ function App() {
         {/* <Route path="*" element={<Error />} /> */}
         <Route path='/verify-email' element={<VerifyEmail />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/modules" element={<Modules />} />
         <Route path="/signup" element={<Signup />} />
-      </Routes>
+
+      <Route
+          element={
+              <ViewModules />
+          }>
+          {
+              <>
+                <Route
+                  path="view-Modules/:module"
+                  element={<ViewModuleData />}
+                />
+           
+              </>
+          }
+        </Route>
       
+      </Routes>
     </div>
   );
 }
