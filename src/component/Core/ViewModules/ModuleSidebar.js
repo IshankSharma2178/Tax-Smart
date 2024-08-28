@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Module1 } from '../../../data/ModulesData/Module1'; 
+import { Module1 } from '../../../data/ModulesData/Modules1/Module1Data'; 
 import { Module2 } from '../../../data/ModulesData/Module2'; 
 import { Module3 } from '../../../data/ModulesData/Module3'; 
 import { Module4 } from '../../../data/ModulesData/Module4'; 
-import { setContent } from "../../../slices/ModuleSlice";
+import { setContent, setQuiz } from "../../../slices/ModuleSlice";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useNavigate } from 'react-router';
 import { FaHome } from 'react-icons/fa';
@@ -31,8 +31,15 @@ function ModuleSidebar() {
         setLoading(true);
     }, [selectedModule]); 
 
-    const clickHandler = (content) => {
+    const ContentClickHandler = (content) => {
+        dispatch(setQuiz(null));
         dispatch(setContent(content));
+    }
+
+    const QuizHandler = (quizData)=>{
+        console.log("1234 ",quizData);
+        dispatch(setContent(null));
+        dispatch(setQuiz(quizData));
     }
  
     const toggleDropdown = (index) => {
@@ -79,12 +86,12 @@ function ModuleSidebar() {
                             </button>
                             {openDropdowns[index] && (               
                                 <div className="ml-4 mt-2">
-                                    <button onClick={() => clickHandler(data.content)} className="cursor-pointer hover:text-blue-500">
+                                    <button onClick={() => ContentClickHandler(data.content)} className="cursor-pointer hover:text-blue-500">
                                         Content
                                     </button>
-                                    <div className="cursor-pointer hover:text-blue-500">
+                                    <button onClick={()=>QuizHandler(data.quiz)} className="cursor-pointer hover:text-blue-500">
                                         Quiz
-                                    </div>
+                                    </button>
                                 </div>
                             )}
                         </div>

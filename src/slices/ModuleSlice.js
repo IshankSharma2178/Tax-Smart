@@ -3,6 +3,7 @@ import {createSlice} from "@reduxjs/toolkit"
 const initialState = {
     selectedModule:null,
     content:null,
+    quiz:null,
 }
 
 const ModuleSlice =createSlice({
@@ -14,9 +15,12 @@ const ModuleSlice =createSlice({
         },
         setContent(state,action){
             state.content = action.payload;
+        },
+        setQuiz(state,action){
+            state.quiz = action.payload;
         }
     }
 })
 
-export const {setSelectedModule,setContent} = ModuleSlice.actions;
+export const {setSelectedModule,setContent,setQuiz} = ModuleSlice.actions;
 export default ModuleSlice.reducer;
