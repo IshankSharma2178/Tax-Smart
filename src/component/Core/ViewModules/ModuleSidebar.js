@@ -5,9 +5,9 @@ import { Module2 } from '../../../data/ModulesData/Module2';
 import { Module3 } from '../../../data/ModulesData/Module3'; 
 import { Module4 } from '../../../data/ModulesData/Module4'; 
 import { setContent } from "../../../slices/ModuleSlice";
-import { IoIosArrowBack } from "react-icons/io";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useNavigate } from 'react-router';
-
+import { FaHome } from 'react-icons/fa';
 
 function ModuleSidebar() {
     const [loading, setLoading] = useState(false);
@@ -18,14 +18,13 @@ function ModuleSidebar() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        console.log('ModuleSidebar', selectedModule);
         if (selectedModule === 'module1') {
             setSidebarData(Module1);
-        }else if (selectedModule === 'module2'){
+        } else if (selectedModule === 'module2') {
             setSidebarData(Module2);
-        }else if (selectedModule === 'module3'){
+        } else if (selectedModule === 'module3') {
             setSidebarData(Module3);
-        }else if (selectedModule === 'module4'){
+        } else if (selectedModule === 'module4') {
             setSidebarData(Module4);
         }
 
@@ -44,27 +43,39 @@ function ModuleSidebar() {
     };
 
     return (
-        <div className="lg:sticky lg:top-0 lg:h-screen lg:overflow-y-auto md:sticky md:top-0 md:h-screen md:overflow-y-auto">
+        <div className="lg:sticky lg:top-0 lg:h-screen lg:overflow-y-auto md:sticky md:top-0 md:h-screen md:overflow-y-auto bg-white shadow-md p-4">
             {!loading ? (
                 <div>Loading...</div>
             ) : (
-                <div className="p-4">
-                <div
-                    onClick={() => {
-                    navigate("/modules");
-                    }}
-                    className="flex h-[35px] w-[35px] items-center justify-center rounded-full bg-richblack-100 p-1 text-richblack-700 hover:scale-90"
-                    title="back"
-                >
-                    <IoIosArrowBack size={30} />
-                </div>
+                <div>
+                    <div
+                        onClick={() => {
+                            navigate("/modules");
+                        }}
+                        className="flex items-center space-x-2 cursor-pointer mb-4 text-blue-500"
+                    >
+                        <IoIosArrowBack size={20} />
+                        <span className="text-sm">Main menu</span>
+                    </div>
+
+                    <div className="mb-4">
+                        <span className="text-gray-500 text-xs block">01</span>
+                        <span className="text-lg font-bold">Introduction to Generative AI</span>
+                    </div>
+
+                    <div className="bg-blue-100 p-2 rounded-lg mb-2 flex items-center space-x-2 cursor-pointer">
+                        <FaHome className="text-blue-500" />
+                        <span className="text-blue-500 font-semibold">Course overview</span>
+                    </div>
+
                     {sidebarData.map((data, index) => (
                         <div key={index} className="flex flex-col mb-2">
                             <button 
-                                className="text-left font-bold" 
+                                className="flex justify-between items-center w-full text-left font-medium py-2 hover:bg-gray-100 px-2 rounded-lg" 
                                 onClick={() => toggleDropdown(index)}
                             >
                                 {data.title}
+                                <IoIosArrowForward size={16} className="text-gray-400" />
                             </button>
                             {openDropdowns[index] && (               
                                 <div className="ml-4 mt-2">
