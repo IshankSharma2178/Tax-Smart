@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavbarLinks } from '../../data/NavbarLinks' 
 import { Navigate, NavLink, useNavigate } from 'react-router-dom'
 import logo from "../../assets/img/logo.png"
@@ -6,10 +6,14 @@ import UnderlineAnimation from '../../ui/UnderlineAnimation'
 import Button from '../../ui/Button1'
 import { IoReorderThree } from "react-icons/io5";
 import Sidebar from './Sidebar'
+import { useSelector } from 'react-redux'
+import ProfileDropDown from './ProfileDropDown'
 
 function StaticNavbar({margin, width,height}) {
 
+  const {token,user} = useSelector((state)=>state.auth);
   const [showSidebar,setShowSidebar] = useState(false)
+
 
   const navigate = useNavigate()
     return (
@@ -40,14 +44,24 @@ function StaticNavbar({margin, width,height}) {
           </div>
           
           {/* Authentication Buttons */}
-          <div className='flex flex-row gap-4 mr-0 md:mr-4'>
+          {
+            token === null &&
+            <div className='flex flex-row gap-4 mr-0 md:mr-4'>
             <NavLink to="/signup" className="">
               <Button text={"Sign Up"} />
             </NavLink>
             <NavLink to="/login" className="md:flex hidden">
               <Button text={"Log In"} />
             </NavLink>
-          </div>
+          </div>}
+
+            {/* profile Drop Down */}
+            {
+            token !== null &&
+
+            <ProfileDropDown />
+          }
+
         </div>
       </div>
     );

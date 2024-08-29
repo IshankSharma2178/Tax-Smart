@@ -9,7 +9,7 @@ export const NavbarLinks = [
     },
     {
       title: "Tax Genie",
-      path: "/ai",
+      path: "/tax-bot",
     },
     {
       title: "Tax Calculator",

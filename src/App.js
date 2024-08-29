@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import { Route, Routes } from 'react-router';
 import Home from './pages/Home';
-import Ai from './AI/Ai';
 import TaxCalculator from './pages/TaxCalculator';
 import Modules from './pages/Modules';
 import About from './pages/About';
@@ -14,6 +13,7 @@ import ViewModules from './pages/ViewModules';
 import PrivateRoute from './component/auth/PrivateRoute';
 import ViewModuleData from './component/Core/ViewModules/ViewModuleData';
 import Quiz from './component/Core/Quiz/quiz';
+import Taxbot from './pages/Taxbot';
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
       <TopNavigationButton />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/ai" element={<Ai />} />
+        <Route path="/tax-bot" element={<Taxbot />} />
         <Route path="/Tax-calculator" element={<TaxCalculator />} />
         <Route path="/modules" element={<Modules />} />
         <Route path="/about" element={<About />} />
