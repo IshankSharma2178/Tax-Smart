@@ -4,6 +4,7 @@ const initialState = {
     selectedModule:null,
     content:null,
     quiz:null,
+    selectedTopic:null,
 }
 
 const ModuleSlice =createSlice({
@@ -18,9 +19,12 @@ const ModuleSlice =createSlice({
         },
         setQuiz(state,action){
             state.quiz = action.payload;
+        },
+        setSelectedTopic(state,action){
+            state.selectedTopic = action.payload;
         }
     }
 })
 
-export const {setSelectedModule,setContent,setQuiz} = ModuleSlice.actions;
+export const {setSelectedModule,setContent,setQuiz,setSelectedTopic} = ModuleSlice.actions;
 export default ModuleSlice.reducer;

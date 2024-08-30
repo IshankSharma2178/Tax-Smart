@@ -2,8 +2,7 @@ import React, { useEffect } from 'react';
 
 function Taxbot() {
   useEffect(() => {
-    // Check if the script is already added
-    if (!document.getElementById('chatling-embed-script')) {
+        if (!document.getElementById('chatling-embed-script')) {
       const script = document.createElement('script');
       script.async = true;
       script.id = 'chatling-embed-script';

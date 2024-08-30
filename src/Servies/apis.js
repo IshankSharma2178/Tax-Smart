@@ -15,3 +15,7 @@ export const endpoints = {
     RESETPASSWORD_API: BASE_URL + "/auth/reset-password",
   }
 
+export const moduleEndpoints={
+    Mark_Module_Completed_API : BASE_URL+"/completeModule",
+    MARK_TOPIC_COMPLETED_API : BASE_URL+"/completeTopic",
+}

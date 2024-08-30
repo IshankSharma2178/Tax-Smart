@@ -1,19 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { IoMdCheckmarkCircleOutline, IoMdCloseCircleOutline } from 'react-icons/io';
 
 const Quiz = ({ questions }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [selectedAnsArray,setSelectedAnsArray] = useState([]);
   const [selectedOption, setSelectedOption] = useState(null);
   const [isCorrect, setIsCorrect] = useState(null);
 
   const handleOptionClick = (index) => {
     setSelectedOption(index);
-    setIsCorrect(index === 1); // Replace '1' with the correct answer index for your quiz
+    setIsCorrect(index === 1); 
   };
 
-  
+  useEffect(()=>{
+    console.log('123',questions);
+  },[])
+
+
   const handleNextQuestion = () => {
-    setSelectedOption(null); 
+    
+    setSelectedOption(null);
+    setSelectedAnsArray([...selectedAnsArray,selectedOption]);
     setIsCorrect(null); 
 
     if (currentQuestionIndex < questions.length - 1) {
@@ -63,7 +70,7 @@ const Quiz = ({ questions }) => {
           onClick={handleNextQuestion}
           className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
         >
-          Next Que
+          Next Ques
         </button>
       </div>
     </div>

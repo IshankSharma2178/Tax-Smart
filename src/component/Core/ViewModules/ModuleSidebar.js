@@ -4,14 +4,14 @@ import { Module1 } from '../../../data/ModulesData/Modules1/Module1Data';
 import { Module2 } from '../../../data/ModulesData/Module2'; 
 import { Module3 } from '../../../data/ModulesData/Module3'; 
 import { Module4 } from '../../../data/ModulesData/Module4'; 
-import { setContent, setQuiz } from "../../../slices/ModuleSlice";
+import { setContent, setQuiz, setSelectedTopic } from "../../../slices/ModuleSlice";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useNavigate } from 'react-router';
 import { FaHome } from 'react-icons/fa';
 
 function ModuleSidebar() {
-    const [loading, setLoading] = useState(false);
-    const { selectedModule } = useSelector((state) => state.module);
+    const [loading, setLoading] = useState(true);
+    const { selectedModule, quiz } = useSelector((state) => state.module);
     const [sidebarData, setSidebarData] = useState([]);
     const [activeIndex, setActiveIndex] = useState(null);
     const [activeContent, setActiveContent] = useState(null);
@@ -20,44 +20,54 @@ function ModuleSidebar() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (selectedModule === 'module1') {
-            setSidebarData(Module1);
-        } else if (selectedModule === 'module2') {
-            setSidebarData(Module2);
-        } else if (selectedModule === 'module3') {
-            setSidebarData(Module3);
-        } else if (selectedModule === 'module4') {
-            setSidebarData(Module4);
+        switch (selectedModule) {
+            case 'module1':
+                setSidebarData(Module1);
+                break;
+            case 'module2':
+                setSidebarData(Module2);
+                break;
+            case 'module3':
+                setSidebarData(Module3);
+                break;
+            case 'module4':
+                setSidebarData(Module4);
+                break;
+            default:
+                setSidebarData([]);
         }
 
-        setLoading(true);
+        setLoading(false);
     }, [selectedModule]); 
 
-    const ContentClickHandler = (content) => {
+    const ContentClickHandler = (data) => {
         dispatch(setQuiz(null));
-        dispatch(setContent(content));
-        setActiveContent(content);
+        dispatch(setContent(data.content));
+        dispatch(setSelectedTopic(data));
+        setActiveContent(data.content);
         setActiveQuiz(null);
-    }
+    };
 
     const QuizHandler = (quizData) => {
         dispatch(setContent(null));
         dispatch(setQuiz(quizData));
         setActiveContent(null);
         setActiveQuiz(quizData);
-    }
+    };
+
+    useEffect(() => {
+        if (quiz) {
+            QuizHandler(quiz);
+        }
+    }, [quiz]);
 
     const toggleDropdown = (index) => {
-        if (activeIndex === index) {
-            setActiveIndex(null);
-        } else {
-            setActiveIndex(index);
-        }
+        setActiveIndex(activeIndex === index ? null : index);
     };
 
     return (
         <div className="lg:sticky lg:top-0 lg:h-screen lg:overflow-y-auto md:sticky md:top-0 md:h-screen md:overflow-y-auto bg-white shadow-md p-4">
-            {!loading ? (
+            {loading ? (
                 <div>Loading...</div>
             ) : (
                 <div>
@@ -82,23 +92,23 @@ function ModuleSidebar() {
                     {sidebarData.map((data, index) => (
                         <div key={index} className="flex flex-col mb-2">
                             <button 
-                                className={`flex justify-between items-center  w-full text-left font-medium py-2 px-2 rounded-lg hover:bg-gray-100 ${activeIndex === index ? 'bg-blue-25' : 'hover:bg-blue-5 '}`} 
+                                className={`flex justify-between items-center w-full text-left font-medium py-2 px-2 rounded-lg hover:bg-gray-100 ${activeIndex === index ? 'bg-blue-25' : 'hover:bg-blue-5'}`} 
                                 onClick={() => toggleDropdown(index)}
                             >
                                 {data.title}
-                                <IoIosArrowForward size={16} className="text-gray-400" />
+                                <IoIosArrowForward size={16} className={`text-gray-400 ${activeIndex === index ? "rotate-90" : "rotate-0"} transition-all duration-200`} />
                             </button>
                             {activeIndex === index && (               
-                                <div className="ml-4 mt-2 flex flex-col space-y-2">
+                                <div className="mt-2 flex flex-col space-y-2 transition-all duration-200">
                                     <button 
-                                        onClick={() => ContentClickHandler(data.content)} 
-                                        className={`cursor-pointer px-2 py-1 rounded-lg ${activeContent === data.content ? 'bg-yellow-25' : 'hover:bg-yellow-5'}`}
+                                        onClick={() => ContentClickHandler(data)} 
+                                        className={`cursor-pointer text-left px-6 py-1 rounded-lg ${activeContent === data.content && !quiz ? 'bg-yellow-25' : 'hover:bg-yellow-5'}`}
                                     >
                                         Content
                                     </button>
                                     <button 
                                         onClick={() => QuizHandler(data.quiz)} 
-                                        className={`cursor-pointer px-2 py-1 rounded-lg ${activeQuiz === data.quiz ? 'bg-yellow-25' : 'hover:bg-yellow-5'}`}
+                                        className={`cursor-pointer px-6 text-left py-1 rounded-lg ${activeQuiz === data.quiz || quiz === data.quiz ? 'bg-yellow-25' : 'hover:bg-yellow-5'}`}
                                     >
                                         Quiz
                                     </button>

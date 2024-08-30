@@ -12,7 +12,7 @@ import VerifyEmail from './pages/VerifyEmail';
 import ViewModules from './pages/ViewModules';
 import PrivateRoute from './component/auth/PrivateRoute';
 import ViewModuleData from './component/Core/ViewModules/ViewModuleData';
-import Quiz from './component/Core/Quiz/quiz';
+import Quiz from './component/Core/Quiz/Quiz';
 import Taxbot from './pages/Taxbot';
 
 function App() {
@@ -25,7 +25,6 @@ function App() {
         <Route path="/Tax-calculator" element={<TaxCalculator />} />
         <Route path="/modules" element={<Modules />} />
         <Route path="/about" element={<About />} />
-        <Route path="/quiz" element={<Quiz />} />
         <Route path='/verify-email' element={<VerifyEmail />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
