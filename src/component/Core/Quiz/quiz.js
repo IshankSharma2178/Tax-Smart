@@ -3,38 +3,47 @@ import { IoMdCheckmarkCircleOutline, IoMdCloseCircleOutline } from 'react-icons/
 
 const Quiz = ({ questions }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [selectedAnsArray,setSelectedAnsArray] = useState([]);
+  const [selectedAnsArray, setSelectedAnsArray] = useState([]);
   const [selectedOption, setSelectedOption] = useState(null);
   const [isCorrect, setIsCorrect] = useState(null);
+  const [showResults, setShowResults] = useState(false);
 
-  const handleOptionClick = (index) => {
-    setSelectedOption(index);
-    // console.log("answer",questions[0]["correctAnswer"])
-    // setIsCorrect(index === questions[index+1]["correctAnswer"]); 
+
+  const handleOptionClick = (option) => {
+    setSelectedOption(option);
   };
 
-  useEffect(()=>{
-    console.log('123',questions);
-  },[])
+  const handleOptionCheck = (index) => {
+    setSelectedOption(index);
+    setIsCorrect(index === 1); // Replace '1' with the correct answer index for your quiz
+  };
 
+  useEffect(() => {
+    console.log('Questions:', questions);
+  }, []);
 
   const handleNextQuestion = () => {
-    
-    setSelectedOption(null);
-    setSelectedAnsArray([...selectedAnsArray,selectedOption]);
-    setIsCorrect(null); 
-
+    setSelectedAnsArray([...selectedAnsArray, selectedOption]);
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
-      console.log("End of questions");
+      console.log("answer array : ",selectedAnsArray)
+      setShowResults(true);
     }
+    setSelectedOption(null);
+    setIsCorrect(null);
   };
 
-  const question = questions[currentQuestionIndex];
+  const calculateScore = () => {
+    return selectedAnsArray.reduce((score, answer, index) => {
+      return answer === questions[index].correctAnswer ? score + 1 : score;
+    }, 0);
+  };
 
-  return (
-    <div className="max-w-xl mx-auto p-4 bg-white rounded-lg shadow-md">
+  if (showResults) {
+    const score = calculateScore();
+    return (
+<div className="max-w-xl mx-auto p-4 bg-white rounded-lg shadow-md">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl font-semibold">Awesome Quiz Application</h2>
         <div className=" text-blue-600 font-bold py-1 px-3 rounded-full text-sm">
@@ -48,12 +57,59 @@ const Quiz = ({ questions }) => {
           {question.options.map((option, index) => (
             <li
               key={index}
+              onClick={() => handleOptionCheck(index)}
+              className={`cursor-pointer p-2 border rounded-md flex justify-between items-center 
+                ${selectedOption === index ? (isCorrect ? 'bg-caribbeangreen-100 border-caribbeangreen-400' : 'bg-pink-100 border-pink-300') : ''}`}
+            >
+              {option}
+              {selectedOption === index && (
+                isCorrect ? (
+                  <IoMdCheckmarkCircleOutline className="text-green-600" size={20} />
+                ) : (
+                  <IoMdCloseCircleOutline className="text-red-600" size={20} />
+                )
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="flex justify-between items-center">
+        <span className="text-sm text-gray-600">{currentQuestionIndex + 1} of {questions.length} Questions</span>
+        <button
+          onClick={handleNextQuestion}
+          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+        >
+          Next Que
+        </button>
+      </div>
+    </div>
+    );
+  }
+
+  const question = questions[currentQuestionIndex];
+
+  return (
+    <div className="max-w-xl mx-auto p-4 bg-white rounded-lg shadow-md">
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-xl font-semibold">Awesome Quiz Application</h2>
+        <div className="text-blue-600 font-bold py-1 px-3 rounded-full text-sm">
+          Time Left <span className="ml-1 p-1 bg-gray-800 text-white rounded">08</span>
+        </div>
+      </div>
+
+      <div className="mb-6">
+        <h3 className="text-lg font-bold mb-2">{currentQuestionIndex + 1}. {question.text}</h3>
+        <ul className="space-y-2">
+          {question.options.map((option, index) => (
+            <li
+              key={index}
               onClick={() => handleOptionClick(option)}
-              className={`cursor-pointer p-2 border rounded-md flex justify-between items-center `}
+              className={`cursor-pointer p-2 border rounded-md flex justify-between items-center`}
             >
               {option}
               {selectedOption === option && (
-                isCorrect ? (
+                selectedOption ? (
                   <IoMdCheckmarkCircleOutline className="text-green-600" size={20} />
                 ) : (
                   <IoMdCloseCircleOutline className="text-red-600" size={20} />
