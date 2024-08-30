@@ -13,9 +13,9 @@ const Quiz = ({ questions }) => {
     setSelectedOption(option);
   };
 
-  const handleOptionCheck = (index) => {
-    setSelectedOption(index);
-    setIsCorrect(index === 1); // Replace '1' with the correct answer index for your quiz
+  const handleOptionCheck = (option,index) => {
+    setSelectedOption(option);
+    setIsCorrect(option ===  selectedAnsArray[index]); 
   };
 
   useEffect(() => {
@@ -57,7 +57,7 @@ const Quiz = ({ questions }) => {
           {question.options.map((option, index) => (
             <li
               key={index}
-              onClick={() => handleOptionCheck(index)}
+              onClick={() => handleOptionCheck(option,index)}
               className={`cursor-pointer p-2 border rounded-md flex justify-between items-center 
                 ${selectedOption === index ? (isCorrect ? 'bg-caribbeangreen-100 border-caribbeangreen-400' : 'bg-pink-100 border-pink-300') : ''}`}
             >
