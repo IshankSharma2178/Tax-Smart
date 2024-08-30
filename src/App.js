@@ -10,9 +10,7 @@ import Signup from './pages/Signup';
 import TopNavigationButton from './component/common/TopNavigationButton';
 import VerifyEmail from './pages/VerifyEmail';
 import ViewModules from './pages/ViewModules';
-import PrivateRoute from './component/auth/PrivateRoute';
 import ViewModuleData from './component/Core/ViewModules/ViewModuleData';
-import Quiz from './component/Core/Quiz/Quiz';
 import Taxbot from './pages/Taxbot';
 
 function App() {
