@@ -10,7 +10,8 @@ const TaxCalculator = () => {
   const [totalIncome, setTotalIncome] = useState('');
   const [totalDeductions, setTotalDeductions] = useState('');
   const [regime, setRegime] = useState('old');
-  const [tax, setTax] = useState(0);
+  const [oldRegimeTax, setOldRegimeTax] = useState(0);
+  const [newRegimeTax, setNewRegimeTax] = useState(0);
 
   // Calculate tax
   const calculateTax = (event) => {
@@ -19,17 +20,19 @@ const TaxCalculator = () => {
     const income = parseFloat(totalIncome);
     const deductions = parseFloat(totalDeductions);
     const taxableIncome = income - deductions;
-    let calculatedTax = 0;
     
+    let calculatedOldTax = 0;
+    let calculatedNewTax = 0;
+
     if (regime === 'old') {
-      calculatedTax = calculateOldRegimeTax(taxableIncome, age);
-      console.log(calculatedTax)
-
+      calculatedOldTax = calculateOldRegimeTax(taxableIncome, age);
+      setOldRegimeTax(calculatedOldTax);
+      setNewRegimeTax(0);
     } else {
-      calculatedTax = calculateNewRegimeTax(taxableIncome);
+      calculatedNewTax = calculateNewRegimeTax(taxableIncome);
+      setOldRegimeTax(0);
+      setNewRegimeTax(calculatedNewTax);
     }
-
-    setTax(calculatedTax);
   };
 
   // Calculate tax for old regime
@@ -39,30 +42,28 @@ const TaxCalculator = () => {
                  : age === '60-79' ? [300000, 500000, 1000000]
                  : [500000, 1000000];
 
-    tax = computeTax(income, slabs);
+    tax = computeTax(income, slabs, [0.05, 0.10, 0.20, 0.30]);
     return tax;
   };
 
   // Calculate tax for new regime
   const calculateNewRegimeTax = (income) => {
     const slabs = [250000, 500000, 750000, 1000000, 1250000, 1500000];
-    return computeTax(income, slabs);
+    return computeTax(income, slabs, [0.05, 0.10, 0.15, 0.20, 0.25, 0.30]);
   };
 
   // Compute tax based on slabs
-  const computeTax = (income, slabs) => {
+  const computeTax = (income, slabs, rates) => {
     let tax = 0;
+    let prevSlab = 0;
 
-    if (income > slabs[0]) {
-      if (slabs.length > 1 && income > slabs[1]) {
-        if (slabs.length > 2 && income > slabs[2]) {
-          tax += (income - slabs[2]) * 0.30;
-          income = slabs[2];
-        }
-        tax += (income - slabs[1]) * 0.20;
-        income = slabs[1];
+    for (let i = 0; i < slabs.length; i++) {
+      if (income > slabs[i]) {
+        tax += (Math.min(income, slabs[i+1] || income) - slabs[i]) * rates[i];
+      } else {
+        break;
       }
-      tax += (income - slabs[0]) * 0.05;
+      prevSlab = slabs[i];
     }
 
     return tax;
@@ -74,7 +75,6 @@ const TaxCalculator = () => {
         <StaticNavbar />
       </div>
       <div className="max-w-3xl mt-8 mx-auto p-5 flex gap-8 bg-white rounded-lg shadow-xl">
-
         <form className="w-full space-y-5 tax-form" onSubmit={calculateTax}>
           {/* Assessment Year */}
           <div className="mb-5">
@@ -236,7 +236,9 @@ const TaxCalculator = () => {
               onClick={() => {
                 setTotalIncome('');
                 setTotalDeductions('');
-                setTax(0);
+                setOldRegimeTax(0);
+                setNewRegimeTax(0);
+                setRegime('old');
               }}
               className="bg-[#e8f4ff] text-black py-2 px-4 rounded shadow hover:bg-blue-200"
             >
@@ -246,7 +248,15 @@ const TaxCalculator = () => {
 
           {/* Result */}
           <div className="mb-5">
-            <h3 className="text-lg font-semibold">Total Tax: <input type="text" value={`₹${tax.toFixed(2)}`} readOnly placeholder="Result" className="border border-gray-300 rounded px-2 py-1"/></h3>
+            <h3 className="text-lg font-semibold">Total Tax: 
+              <input 
+                type="text" 
+                value={(regime === 'old' ? oldRegimeTax : newRegimeTax).toFixed(2)}
+                readOnly 
+                placeholder="Result" 
+                className="border border-gray-300 rounded px-2 py-1"
+              />
+            </h3>
           </div>
 
           {/* Note */}
@@ -261,7 +271,9 @@ const TaxCalculator = () => {
           {/* Disclaimer */}
           <div className="bg-[#e8f4ff] p-5 rounded mb-5">
             <h2 className="text-lg font-semibold">Disclaimer :</h2>
-            <p className="text-sm text-gray-600">The above calculator is only to enable public to have a <br /> quick and an easy access to basic tax calculation and <br /> does not purport to give correct income and tax <br /> calculation in all circumstances. It is advised that for filing <br /> of returns the exact calculation may be made as per the <br /> provisions contained in the relevant Acts, Rules etc.</p>
+            <p className="text-sm text-gray-600">
+              The above calculator is only to enable public to have a <br /> quick and an easy access to basic tax calculation and <br /> does not purport to give correct income and tax <br /> calculation in all circumstances. It is advised that for filing <br /> of returns the exact calculation may be made as per the <br /> provisions contained in the relevant Acts, Rules etc.
+            </p>
           </div>
         </form>
 
@@ -270,12 +282,11 @@ const TaxCalculator = () => {
           <h3 className="text-lg font-semibold">Tax Summary</h3>
           <p>Total Annual Income: ₹{totalIncome}</p>
           <p>Total Deductions: ₹{totalDeductions}</p>
-          <p>Tax Amount (as per old Tax regime): <span className="font-bold">{regime === 'old' ? `₹${tax.toFixed(2)}` : '0'}</span></p>
-          <p>Tax Amount (as per new Tax regime): <span className="font-bold">{regime === 'new' ? `₹${tax.toFixed(2)}` : '0'}</span></p>
+          <p>Tax Amount (as per Old Tax Regime): <span className="font-bold">₹{oldRegimeTax.toFixed(2)}</span></p>
+          <p>Tax Amount (as per New Tax Regime): <span className="font-bold">₹{newRegimeTax.toFixed(2)}</span></p>
           <a href="#" className="text-blue-500 hover:underline block mt-4 font-bold">View Comparison</a>
-          <p className="mt-2">You save Rs. <span className="font-bold">{regime === 'old' ? `₹${(tax - tax).toFixed(2)}` : '0'}</span> if you opt for New Tax Regime.</p>
+          <p className="mt-2">You save Rs. <span className="font-bold">₹{(oldRegimeTax - newRegimeTax).toFixed(2)}</span> if you opt for New Tax Regime.</p>
         </div>
-
       </div>
     </div>
   );

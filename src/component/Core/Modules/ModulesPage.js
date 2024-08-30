@@ -12,6 +12,9 @@ function ModulesPage({ModuleName,Description,noOfModules ,link, index}) {
 
 
   const clickHandler = () =>{
+    if(isModuleCompleted){
+      const result =
+    }
     console.log('clickHandler');
     dispatch(setContent(null))
     navigate(`/view-Modules/${link}`)
