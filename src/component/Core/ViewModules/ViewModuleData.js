@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import Quiz from '../Quiz/Quiz';
+import Quiz from '../Quiz/QuizBox';
 import { setContent, setQuiz } from '../../../slices/ModuleSlice';
 
 function ViewModuleData() {
