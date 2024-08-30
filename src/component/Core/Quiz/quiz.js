@@ -9,7 +9,8 @@ const Quiz = ({ questions }) => {
 
   const handleOptionClick = (index) => {
     setSelectedOption(index);
-    setIsCorrect(index === 1); 
+    // console.log("answer",questions[0]["correctAnswer"])
+    // setIsCorrect(index === questions[index+1]["correctAnswer"]); 
   };
 
   useEffect(()=>{
@@ -47,12 +48,11 @@ const Quiz = ({ questions }) => {
           {question.options.map((option, index) => (
             <li
               key={index}
-              onClick={() => handleOptionClick(index)}
-              className={`cursor-pointer p-2 border rounded-md flex justify-between items-center 
-                ${selectedOption === index ? (isCorrect ? 'bg-caribbeangreen-100 border-caribbeangreen-400' : 'bg-pink-100 border-pink-300') : ''}`}
+              onClick={() => handleOptionClick(option)}
+              className={`cursor-pointer p-2 border rounded-md flex justify-between items-center `}
             >
               {option}
-              {selectedOption === index && (
+              {selectedOption === option && (
                 isCorrect ? (
                   <IoMdCheckmarkCircleOutline className="text-green-600" size={20} />
                 ) : (
