@@ -11,7 +11,6 @@ const Quiz = ({ questions, topic }) => {
   const { selectedModule, quiz } = useSelector((state) => state.module);
   const [selectedOption, setSelectedOption] = useState(null);
   const [showResults, setShowResults] = useState(false);
-  const [showResults1, setShowResults1] = useState(false);
   const [loading, setLoading] = useState(true);
   const [doSubmit, setDoSubmit] = useState(false);
 
@@ -29,8 +28,7 @@ const Quiz = ({ questions, topic }) => {
     } else {
       setShowResults(true);
       setDoSubmit(true);
-      setAnswer(selectedAnsArray)
-      
+      setAnswer(selectedAnsArray);
     }
     setSelectedOption(null);
   };
@@ -43,21 +41,15 @@ const Quiz = ({ questions, topic }) => {
   }, [doSubmit, selectedAnsArray]);
 
   const calculateScore = () => {
-    if(selectedAnsArray.length >0){
-      return selectedAnsArray.reduce((score, answer, index) => {
-        return answer === questions[index].correctAnswer ? score + 1 : score;
-      }, 0);
-    }else{
-      return answers.reduce((score, answer, index) => {
-        return answer === questions[index].correctAnswer ? score + 1 : score;
-      }, 0)
-    }
+    const targetArray = selectedAnsArray.length > 0 ? selectedAnsArray : answers;
+    return targetArray.reduce((score, answer, index) => {
+      return answer === questions[index]?.correctAnswer ? score + 1 : score;
+    }, 0);
   };
 
   const SubmitHandler = () => {
     try {
       console.log(user.email, selectedModule, selectedAnsArray, questions);
-      // setLoading(true);
       dispatch(
         setCompletedQuestions({
           module: selectedModule,
@@ -66,38 +58,41 @@ const Quiz = ({ questions, topic }) => {
           completedQuestions: selectedAnsArray,
         })
       );
-      setAnswer(getCompletedQuestions({
-        email:user.email,
-        topic:topic,
-        module:selectedModule,
-      }))
-      // setLoading(false);
+      setAnswer(
+        getCompletedQuestions({
+          email: user.email,
+          topic: topic,
+          module: selectedModule,
+        })
+      );
     } catch (e) {
       console.log(e);
     }
   };
 
-  useEffect(()=>{
-      setAnswer(false);
-      console.log("answer =>",answers)
-  },[selectedModule])
-
-
+  useEffect(() => {
+    setAnswer([]);
+    console.log("answer =>", answers);
+  }, [selectedModule]);
 
   useEffect(() => {
     const getData = async () => {
       try {
         setLoading(true);
-        const result = await getCompletedQuestions({ email: user.email, topic: topic, module: selectedModule });
+        const result = await getCompletedQuestions({
+          email: user.email,
+          topic: topic,
+          module: selectedModule,
+        });
         console.log("result:", result);
-        if (result.length > 0) {
-          setShowResults1(true);
+        if (result && result.length > 0) {
           setAnswer(result);
         } else {
           setAnswer([]);
         }
       } catch (error) {
         console.log('Error fetching data:', error);
+        setAnswer([]);
       } finally {
         setLoading(false);
       }
@@ -106,10 +101,24 @@ const Quiz = ({ questions, topic }) => {
     getData();
   }, [quiz]);
 
-  const question = questions[currentQuestionIndex];
+  // Ensure questions are available and index is within bounds
+  const question = questions?.[currentQuestionIndex];
 
   if (loading) {
-    return <div className="max-w-xl mx-auto p-4 bg-white rounded-lg shadow-md">Loading...</div>; 
+    return (
+      <div className="max-w-xl mx-auto p-4 bg-white rounded-lg shadow-md">
+        Loading...
+      </div>
+    );
+  }
+
+  if (!question) {
+    // Handle the case where no question is available
+    return (
+      <div className="max-w-xl mx-auto p-4 bg-white rounded-lg shadow-md">
+        No questions available.
+      </div>
+    );
   }
 
   if (answers.length > 0) {
@@ -132,15 +141,15 @@ const Quiz = ({ questions, topic }) => {
                     key={optIndex}
                     className={`p-2 border rounded-md flex justify-between items-center 
                         ${option === question.correctAnswer ? "bg-caribbeangreen-100" : ""} 
-                        ${answers[index] === option && option === question.correctAnswer ? "bg-caribbeangreen-100" : ""}
-                        ${answers[index] === option && option !== question.correctAnswer ? "bg-pink-100" : ""}
+                        ${answers[index] && answers[index] === option && option === question.correctAnswer ? "bg-caribbeangreen-100" : ""}
+                        ${answers[index] && answers[index] === option && option !== question.correctAnswer ? "bg-pink-100" : ""}
                     `}
                   >
                     {option}
-                    {answers[index] === option && option === question.correctAnswer && (
+                    {answers[index] && answers[index] === option && option === question.correctAnswer && (
                       <IoMdCheckmarkCircleOutline className="text-green-600" size={20} />
                     )}
-                    {answers[index] === option && option !== question.correctAnswer && (
+                    {answers[index] && answers[index] === option && option !== question.correctAnswer && (
                       <IoMdCloseCircleOutline className="text-red-600" size={20} />
                     )}
                   </li>

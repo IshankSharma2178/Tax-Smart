@@ -26,7 +26,10 @@ function StaticNavbar({margin, width,height}) {
       dispatch(setCoins(result))
     }
     setLoading(true)
-    getUserCoins();
+    if(token){
+      getUserCoins();
+
+    }
     setLoading(false);
   },[])
 
@@ -73,15 +76,16 @@ function StaticNavbar({margin, width,height}) {
             {/* Coins */}
 
             {/* profile Drop Down */}
-            <div className='w-auto text-right min-w-[180px]'>
+            
               {
               token !== null &&
+            <div className='w-auto text-right min-w-[180px]'>
               <div className='flex items-end justify-end gap-4'>
                 <div>{coins}</div>
                 <ProfileDropDown />
               </div>
-            }
             </div>
+            }
 
         </div>
       </div>

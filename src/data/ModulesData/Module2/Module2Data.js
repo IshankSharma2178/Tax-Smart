@@ -4,7 +4,7 @@ import { quiz3 } from '../quiz3';
 import { quiz4 } from '../quiz4';
 import {finalquiz} from '../finalquiz'
 
-export const Module2Data = [
+export const Module2 = [
     {
       topicNo:"topic1",
       title: "Standard Deductions in Different Regimes",
