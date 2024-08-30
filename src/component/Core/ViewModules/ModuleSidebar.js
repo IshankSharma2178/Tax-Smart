@@ -44,6 +44,7 @@ function ModuleSidebar() {
         dispatch(setQuiz(null));
         dispatch(setContent(data.content));
         dispatch(setSelectedTopic(data));
+        console.log(data);
         setActiveContent(data.content);
         setActiveQuiz(null);
     };

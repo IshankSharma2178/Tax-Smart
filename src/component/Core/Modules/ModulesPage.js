@@ -15,6 +15,7 @@ function ModulesPage({ModuleName,Description,noOfModules ,link, index}) {
     console.log('clickHandler');
     dispatch(setContent(null))
     navigate(`/view-Modules/${link}`)
+    console.log('clickHandler',link);
     dispatch(setSelectedModule(link))
   }
 

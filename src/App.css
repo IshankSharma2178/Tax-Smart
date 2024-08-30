@@ -341,3 +341,88 @@ strong {
 .shadow1{
   text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
 }
+
+/* tax bot loader */
+
+.spinner8 {
+  --clr: rgb(0, 113, 128);
+  --gap: 6px;
+    /* gap between each circle */
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--gap);
+ }
+ 
+ .spinner8 span {
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  background-color: var(--clr);
+  opacity: 0;
+ }
+ 
+ .spinner8 span:nth-child(1) {
+  animation: fade 1s ease-in-out infinite;
+ }
+ 
+ .spinner8 span:nth-child(2) {
+  animation: fade 1s ease-in-out 0.33s infinite;
+ }
+ 
+ .spinner8 span:nth-child(3) {
+  animation: fade 1s ease-in-out 0.66s infinite;
+ }
+ 
+ @keyframes fade {
+  0%, 100% {
+   opacity: 1;
+  }
+ 
+  60% {
+   opacity: 0;
+  }
+ }
+ 
+
+ /* buy Now */
+/* CSS */
+.button-66 {
+  background-color: #0a6bff;
+  border-radius: 4px;
+  border: 0;
+  box-shadow: rgba(1,60,136,.5) 0 -1px 3px 0 inset,rgba(0,44,97,.1) 0 3px 6px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inherit;
+  font-family: "Space Grotesk",-apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 20px;
+  margin: 0;
+  min-height: 50px;
+  width: 100%;
+  padding: 10px 10px;
+  position: relative;
+  text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  transition: all .2s cubic-bezier(.22, .61, .36, 1);
+}
+
+.button-66:hover {
+  background-color: #065dd8;
+  transform: translateY(-2px);
+}
+
+@media (min-width: 768px) {
+  .button-66 {
+    padding: 16px 44px;
+    min-width: 150px;
+  }
+}

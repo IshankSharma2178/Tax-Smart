@@ -6,14 +6,29 @@ import UnderlineAnimation from '../../ui/UnderlineAnimation'
 import Button from '../../ui/Button1'
 import { IoReorderThree } from "react-icons/io5";
 import Sidebar from './Sidebar'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import ProfileDropDown from './ProfileDropDown'
+import { getCoins } from '../../Servies/operations/module'
+import { setCoins } from '../../slices/ModuleSlice'
 
 function StaticNavbar({margin, width,height}) {
 
   const {token,user} = useSelector((state)=>state.auth);
+  const {coins} = useSelector((state)=>state.module)
   const [showSidebar,setShowSidebar] = useState(false)
+  const [loading,setLoading] = useState(false)
+  const dispatch = useDispatch();
 
+  useEffect(()=>{
+    const getUserCoins = async () =>{
+      console.log('getUserCoins',user.email);
+      const result = await getCoins(user.email);
+      dispatch(setCoins(result))
+    }
+    setLoading(true)
+    getUserCoins();
+    setLoading(false);
+  },[])
 
   const navigate = useNavigate()
     return (
@@ -55,12 +70,18 @@ function StaticNavbar({margin, width,height}) {
             </NavLink>
           </div>}
 
-            {/* profile Drop Down */}
-            {
-            token !== null &&
+            {/* Coins */}
 
-            <ProfileDropDown />
-          }
+            {/* profile Drop Down */}
+            <div className='w-auto text-right min-w-[180px]'>
+              {
+              token !== null &&
+              <div className='flex items-end justify-end gap-4'>
+                <div>{coins}</div>
+                <ProfileDropDown />
+              </div>
+            }
+            </div>
 
         </div>
       </div>

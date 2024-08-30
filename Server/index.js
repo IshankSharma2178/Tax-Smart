@@ -1,6 +1,7 @@
 const express=require('express');
 const app= express();
 const userRoutes=require("./routes/User")
+const paymentRoutes=require("./routes/Payment");
 const moduleRoutes=require("./routes/Module");
 const database =require("./config/database").connect();
 require("dotenv").config();
@@ -21,6 +22,7 @@ app.use(cors({
 
 app.use("/api/v1/auth",userRoutes);
 app.use("/api/v1",moduleRoutes)
+app.use("/api/v1",paymentRoutes);
 
 app.get("/",(req,res)=>{
     return res.json({

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const Module2Schema = new mongoose.Schema({
+const Module5Schema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
@@ -15,8 +15,15 @@ const Module2Schema = new mongoose.Schema({
             default: false,
         },
         quiz: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Quiz",
+            quizCompleted:{
+                type: 'boolean',
+                default: false
+            },
+            completedQuestions:[
+                {
+                    type:String,
+                }
+            ]
         }
     },
     topic2: {
@@ -25,8 +32,15 @@ const Module2Schema = new mongoose.Schema({
             default: false,
         },
         quiz: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Quiz",
+            quizCompleted:{
+                type: 'boolean',
+                default: false
+            },
+            completedQuestions:[
+                {
+                    type:String,
+                }
+            ]
         }
     },
     topic3: {
@@ -35,8 +49,15 @@ const Module2Schema = new mongoose.Schema({
             default: false,
         },
         quiz: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Quiz",
+            quizCompleted:{
+                type: 'boolean',
+                default: false
+            },
+            completedQuestions:[
+                {
+                    type:String,
+                }
+            ]
         }
     },
     topic4: {
@@ -45,10 +66,17 @@ const Module2Schema = new mongoose.Schema({
             default: false,
         },
         quiz: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Quiz",
+            quizCompleted:{
+                type: 'boolean',
+                default: false
+            },
+            completedQuestions:[
+                {
+                    type:String,
+                }
+            ]
         }
     },
 });
 
-module.exports = mongoose.model("Module2", Module2Schema);
+module.exports = mongoose.model("Module5", Module5Schema);

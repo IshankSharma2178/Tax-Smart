@@ -12,6 +12,7 @@ import VerifyEmail from './pages/VerifyEmail';
 import ViewModules from './pages/ViewModules';
 import ViewModuleData from './component/Core/ViewModules/ViewModuleData';
 import Taxbot from './pages/Taxbot';
+import Mentor from './pages/Mentor';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path='/verify-email' element={<VerifyEmail />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/mentor" element={<Mentor />} />
 
       <Route
           element={

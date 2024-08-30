@@ -26,7 +26,7 @@ function ProfileDropDown() {
     }, []);
 
     return (
-        <div className='w-auto md:min-w-[180px] '>
+        <div className=' '>
             {user && (
                 <div className='text-richblack-100 flex-row-reverse justify-start relative flex gap-3 flex-row items-center '>
                     <div onClick={() => setIsVisible(true)} className='flex flex-row gap-2 items-center justify-end'>

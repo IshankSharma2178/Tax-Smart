@@ -9,6 +9,7 @@ const Module1 = require('../models/Module1');
 const Module2 = require('../models/Module2');
 const Module3 = require('../models/Module3');
 const Module4 = require('../models/Module4');
+const Module5 = require('../models/Module5');
 const Modules = require('../models/Modules');
 
 
@@ -64,13 +65,13 @@ exports.sendOTP = async (req,res) => {
         })
     }
 }
+
 //sign up
 
 exports.signup = async (req, res) => {
     try {
         const { firstName, lastName, email, password, confirmPassword, otp } = req.body;
 
-        // Validate entries
         if (!firstName || !lastName || !email || !password || !confirmPassword || !otp) {
             return res.status(403).json({
                 success: false,
@@ -78,7 +79,6 @@ exports.signup = async (req, res) => {
             });
         }
 
-        // Check if passwords match
         if (password !== confirmPassword) {
             return res.status(403).json({
                 success: false,
@@ -86,7 +86,6 @@ exports.signup = async (req, res) => {
             });
         }
 
-        // Check if user already exists
         const checkUserPresent = await User.findOne({ email: email });
         if (checkUserPresent) {
             return res.status(400).json({
@@ -95,7 +94,6 @@ exports.signup = async (req, res) => {
             });
         }
 
-        // Find the most recent OTP for the user
         const recentOtp = await OTP.findOne({ email }).sort({ createdAt: -1 }).limit(1);
         if (!recentOtp) {
             return res.status(400).json({
@@ -109,10 +107,8 @@ exports.signup = async (req, res) => {
             });
         }
 
-        // Hash password
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        // Create Profile entry
         const profileDetails = await Profile.create({
             gender: null,
             dateOfBirth: null,
@@ -120,7 +116,6 @@ exports.signup = async (req, res) => {
             contactNumber: null,
         });
 
-        // Create User entry
         const user = await User.create({
             firstName,
             lastName,
@@ -130,17 +125,19 @@ exports.signup = async (req, res) => {
             image: `https://api.dicebear.com/5.x/initials/svg?seed=${firstName} ${lastName}`,
         });
 
-        // Create module entries with the newly created user email
         const module1 = await Module1.create({ email: email });
         const module2 = await Module2.create({ email: email });
         const module3 = await Module3.create({ email: email });
         const module4 = await Module4.create({ email: email });
+        const module5 = await Module5.create({ email: email });
+        const modules = await Modules.create({ email: email });
 
         const modulesDetails = await Modules.create({
             module1: module1._id,
             module2: module2._id,
             module3: module3._id,
             module4: module4._id,
+            module5: module5._id,
         });
 
         user.modulesDetails = modulesDetails._id;

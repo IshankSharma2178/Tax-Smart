@@ -15,8 +15,15 @@ const Module4Schema = new mongoose.Schema({
             default: false,
         },
         quiz: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Quiz",
+            quizCompleted:{
+                type: 'boolean',
+                default: false
+            },
+            completedQuestions:[
+                {
+                    type:String,
+                }
+            ]
         }
     },
     topic2: {
@@ -25,8 +32,15 @@ const Module4Schema = new mongoose.Schema({
             default: false,
         },
         quiz: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Quiz",
+            quizCompleted:{
+                type: 'boolean',
+                default: false
+            },
+            completedQuestions:[
+                {
+                    type:String,
+                }
+            ]
         }
     },
     topic3: {
@@ -35,8 +49,15 @@ const Module4Schema = new mongoose.Schema({
             default: false,
         },
         quiz: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Quiz",
+            quizCompleted:{
+                type: 'boolean',
+                default: false
+            },
+            completedQuestions:[
+                {
+                    type:String,
+                }
+            ]
         }
     },
  
