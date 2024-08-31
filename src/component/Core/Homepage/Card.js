@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
 import "swiper/css/free-mode"
 import "swiper/css/pagination"
 import 'swiper/css/navigation';
-import { Autoplay, FreeMode, Navigation, Pagination } from 'swiper/modules'
+import { Autoplay, FreeMode, Pagination } from 'swiper/modules'
 import {data} from '../../../data/Review'
 import image from "../../../assets/img/team/v5.jpg"
 
@@ -49,7 +49,7 @@ function Card() {
                     <div className='flex flex-col'>
                         <div className='flex flex-row items-center justify-evenly '>
                             <div className='size-16 rounded-full'>
-                                <img src={image} className='rounded-full'/>
+                                <img src={image} alt="hiii" className='rounded-full'/>
                             </div>
                             <div className='felx flex-col'>                        
                                 <p className='text-richblack-900 font-semibold text-lg'>{review.Post}</p>

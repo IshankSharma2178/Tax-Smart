@@ -6,7 +6,7 @@ function AboutTaxSmart() {
   return (
     <div className=' flex flex-row relative max-w-[1260px] w-11/12 m-auto'>
         <div className='absolute right-0 -top-8'>
-            <img src={CircularShape} />
+            <img src={CircularShape} alt="hiiii" />
         </div>
         <div className='w-[50%] pt-8 m-auto'>
             <img src={Image}/>
