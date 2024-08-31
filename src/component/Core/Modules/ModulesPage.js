@@ -3,23 +3,26 @@ import banner from "../../../assets/img/banner/8.jpg"
 import Button1 from '../../common/UI/Button1'
 import { useNavigate } from 'react-router'
 import { useDispatch } from 'react-redux';
-import { setContent, setSelectedModule } from '../../../slices/ModuleSlice';
+import { setContent, setSelectedModule, setSelectedTopic } from '../../../slices/ModuleSlice';
+import toast from 'react-hot-toast';
 
-function ModulesPage({ModuleName,Description,noOfModules ,link, index}) {
+function ModulesPage({ModuleName,Description,noOfModules ,link, index ,notShow,images}) {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
 
   const clickHandler = () =>{
-    if(isModuleCompleted){
-      const result =
-    }
-    console.log('clickHandler');
-    dispatch(setContent(null))
-    navigate(`/view-Modules/${link}`)
+    console.log('clickHandler',ModuleName);
+    dispatch(setContent(link))
     console.log('clickHandler',link);
     dispatch(setSelectedModule(link))
+    dispatch(setSelectedTopic(0))
+    navigate(`/view-Modules/module${index+1}`)
+  }
+
+  const clickHandler1 = () =>{
+    toast.error("Please First Solve the Module One")
   }
 
   return (
@@ -28,7 +31,7 @@ function ModulesPage({ModuleName,Description,noOfModules ,link, index}) {
             <div className='p-4'>
               <img 
                   className="w-full h-48 object-cover" 
-                  src={banner}
+                  src={images}
                   alt="Course"
               />
             </div>
@@ -46,8 +49,12 @@ function ModulesPage({ModuleName,Description,noOfModules ,link, index}) {
                     {Description}
                 </p>
                 <div className='mt-6'>
-                  <Button1 icon={"FaArrowRight"} text={"Start course"} onCLick={()=>clickHandler()} >
-                  </Button1>
+                {
+                  index === 0 ?
+                  (<Button1 icon={"FaArrowRight"} text={"Start course"} onCLick={()=>clickHandler()} >
+                  </Button1>):(<div><Button1 icon={"FaArrowRight"} text={"Start course"} onCLick={()=>clickHandler1()} >
+                  </Button1></div>)
+                }
                 </div>
             </div>
         </div>

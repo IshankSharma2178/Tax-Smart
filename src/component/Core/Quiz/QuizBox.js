@@ -1,206 +1,133 @@
-import React, { useEffect, useState } from 'react';
-import { IoMdCheckmarkCircleOutline, IoMdCloseCircleOutline } from 'react-icons/io';
-import { useDispatch, useSelector } from 'react-redux';
-import { setCompletedQuestions, getCompletedQuestions } from '../../../Servies/operations/module'; 
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { setCompletedQuestions } from "../../../Servies/operations/module";
 
-const Quiz = ({ questions, topic }) => {
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [selectedAnsArray, setSelectedAnsArray] = useState([]);
-  const { user } = useSelector((state) => state.auth);
-  const [answers, setAnswer] = useState([]);
-  const { selectedModule, quiz } = useSelector((state) => state.module);
-  const [selectedOption, setSelectedOption] = useState(null);
-  const [showResults, setShowResults] = useState(false);
-  const [loading, setLoading] = useState(true);
-  const [doSubmit, setDoSubmit] = useState(false);
+const Quiz = ({ questions }) => {
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [showScore, setShowScore] = useState(false);
+  const [score, setScore] = useState(0);
+  const { user, selectedTopic } = useSelector((state) => state.auth);
+  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedIndex, setSelectedIndex] = useState(null);
+  const [answers, setAnswers] = useState([]);
+  const [result, setShowResult] = useState(false);
 
-  const dispatch = useDispatch();
+  const handleAnswerOptionClick = () => {
+    if (selectedOption === "") return;
 
-  const handleOptionClick = (option) => {
-    setSelectedOption(option);
-  };
+    const correctAnswer = questions[0].quiz[currentQuestion].correctAnswer;
+    const isCorrect = selectedOption === correctAnswer;
 
-  const handleNextQuestion = () => {
-    setSelectedAnsArray((prevSelectedAnsArray) => [...prevSelectedAnsArray, selectedOption]);
+    if (isCorrect) {
+      setScore(score + 1);
+    }
 
-    if (currentQuestionIndex < questions.length - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
+    // Save the answer with correctness
+    setAnswers([
+      ...answers,
+      { option: selectedOption, isCorrect, correctAnswer },
+    ]);
+    setSelectedOption("");
+    setSelectedIndex(null);
+
+    if (currentQuestion + 1 < questions[0].quiz.length) {
+      setCurrentQuestion(currentQuestion + 1);
     } else {
-      setShowResults(true);
-      setDoSubmit(true);
-      setAnswer(selectedAnsArray);
+      setShowScore(true);
+      handleQuizSubmit([
+        ...answers,
+        { option: selectedOption, isCorrect, correctAnswer },
+      ]);
     }
-    setSelectedOption(null);
   };
 
-  useEffect(() => {
-    if (showResults) {
-      console.log('Selected answers array updated at submit:', selectedAnsArray);
-      SubmitHandler();
-    }
-  }, [doSubmit, selectedAnsArray]);
-
-  const calculateScore = () => {
-    const targetArray = selectedAnsArray.length > 0 ? selectedAnsArray : answers;
-    return targetArray.reduce((score, answer, index) => {
-      return answer === questions[index]?.correctAnswer ? score + 1 : score;
-    }, 0);
-  };
-
-  const SubmitHandler = () => {
+  const handleQuizSubmit = async (finalAnswers) => {
     try {
-      console.log(user.email, selectedModule, selectedAnsArray, questions);
-      dispatch(
-        setCompletedQuestions({
-          module: selectedModule,
-          topic: topic,
-          email: user.email,
-          completedQuestions: selectedAnsArray,
-        })
-      );
-      setAnswer(
-        getCompletedQuestions({
-          email: user.email,
-          topic: topic,
-          module: selectedModule,
-        })
-      );
-    } catch (e) {
-      console.log(e);
+      await setCompletedQuestions({
+        email: user.email,
+        topic: selectedTopic,
+        module: 0,
+        completedQuestions: finalAnswers,
+      });
+    } catch (error) {
+      console.error("Error submitting quiz results:", error);
     }
+    setShowResult(true);
   };
 
-  useEffect(() => {
-    setAnswer([]);
-    console.log("answer =>", answers);
-  }, [selectedModule]);
+  const selectHandler = (option, index) => {
+    setSelectedOption(option);
+    setSelectedIndex(index);
+  };
 
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        setLoading(true);
-        const result = await getCompletedQuestions({
-          email: user.email,
-          topic: topic,
-          module: selectedModule,
-        });
-        console.log("result:", result);
-        if (result && result.length > 0) {
-          setAnswer(result);
-        } else {
-          setAnswer([]);
-        }
-      } catch (error) {
-        console.log('Error fetching data:', error);
-        setAnswer([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    getData();
-  }, [quiz]);
-
-  // Ensure questions are available and index is within bounds
-  const question = questions?.[currentQuestionIndex];
-
-  if (loading) {
-    return (
-      <div className="max-w-xl mx-auto p-4 bg-white rounded-lg shadow-md">
-        Loading...
-      </div>
-    );
-  }
-
-  if (!question) {
-    // Handle the case where no question is available
-    return (
-      <div className="max-w-xl mx-auto p-4 bg-white rounded-lg shadow-md">
-        No questions available.
-      </div>
-    );
-  }
-
-  if (answers.length > 0) {
-    const score = calculateScore();
-    return (
-      <div className="max-w-xl mx-auto p-4 bg-white rounded-lg shadow-md">
-        <h2 className="text-xl font-semibold mb-4">Quiz Results</h2>
-        <p className="text-lg mb-2">
-          You answered {score} out of {questions.length} questions correctly!
-        </p>
-        <ul className="space-y-4">
-          {questions.map((question, index) => (
-            <li key={index} className="p-2 border rounded-md">
-              <h3 className="font-bold">
-                {index + 1}. {question.text}
-              </h3>
-              <ul className="mt-2 space-y-1">
-                {question.options.map((option, optIndex) => (
-                  <li
-                    key={optIndex}
-                    className={`p-2 border rounded-md flex justify-between items-center 
-                        ${option === question.correctAnswer ? "bg-caribbeangreen-100" : ""} 
-                        ${answers[index] && answers[index] === option && option === question.correctAnswer ? "bg-caribbeangreen-100" : ""}
-                        ${answers[index] && answers[index] === option && option !== question.correctAnswer ? "bg-pink-100" : ""}
-                    `}
-                  >
-                    {option}
-                    {answers[index] && answers[index] === option && option === question.correctAnswer && (
-                      <IoMdCheckmarkCircleOutline className="text-green-600" size={20} />
-                    )}
-                    {answers[index] && answers[index] === option && option !== question.correctAnswer && (
-                      <IoMdCloseCircleOutline className="text-red-600" size={20} />
-                    )}
+  return (
+    <div className="container mx-auto p-4">
+      {result ? (
+        <div className="flex flex-col items-center justify-center">
+        <div className="text-2xl font-semibold ">Your Score : {score} / {questions[0].quiz.length}</div>
+          {answers.map((answer, index) => (
+            <div
+              key={index}
+              className={`bg-white shadow-md rounded min-w-[700px] px-8 pt-6 pb-8 mb-4 border ${
+                answer.isCorrect ? "border-green-500" : "border-red-500"
+              }`}
+            >
+              <h2 className="text-xl font-bold mb-4">
+                {questions[0].quiz[index].text}
+              </h2>
+              <ul>
+                {questions[0].quiz[index].options.map((option, idx) => (
+                  <li key={idx} className="mb-2">
+                    <button
+                      className={`w-full text-black font-bold py-2 px-4 rounded border ${
+                        option === answer.correctAnswer
+                          ? "bg-caribbeangreen-200"
+                          : option === answer.option && !answer.isCorrect
+                          ? "bg-pink-200"
+                          : ""
+                      }`}
+                    >
+                      {option}
+                    </button>
                   </li>
                 ))}
               </ul>
-            </li>
+            </div>
           ))}
-        </ul>
-      </div>
-    );
-  }
-
-  return (
-    <div className="max-w-xl mx-auto p-4 bg-white rounded-lg shadow-md">
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="text-xl font-semibold">Awesome Quiz Application</h2>
-        <div className="text-blue-600 font-bold py-1 px-3 rounded-full text-sm">
-          Time Left <span className="ml-1 p-1 bg-gray-800 text-white rounded">08</span>
         </div>
-      </div>
-
-      <div className="mb-6">
-        <h3 className="text-lg font-bold mb-2">
-          {currentQuestionIndex + 1}. {question.text}
-        </h3>
-        <ul className="space-y-2">
-          {question.options.map((option, index) => (
-            <li
-              key={index}
-              onClick={() => handleOptionClick(option)}
-              className={`cursor-pointer p-2 border rounded-md flex justify-between items-center
-                ${selectedOption === option ? 'bg-blue-100 border-blue-400' : ''}`}
+      ) : (
+        <div className="flex flex-col items-center justify-center">
+          <h1 className="text-2xl font-bold mb-4">Quiz Application</h1>
+          <div className="bg-white shadow-md rounded  min-w-[700px] px-8 pt-6 pb-8 mb-4 border border-richblack-50">
+            <h2 className="text-xl font-bold mb-4">
+              {questions[0].quiz[currentQuestion].text}
+            </h2>
+            <ul>
+              {questions[0].quiz[currentQuestion].options.map((option, index) => (
+                <li key={index} className="mb-2">
+                  <button
+                    onClick={() => selectHandler(option, index)}
+                    className={`w-full hover:bg-blue-200 text-black font-bold py-2 px-4 rounded ${
+                      selectedIndex === index ? "bg-blue-200" : ""
+                    } border border-richblack-50`}
+                  >
+                    {option}
+                  </button>
+                </li>
+              ))}
+            </ul>
+            <button
+              onClick={handleAnswerOptionClick}
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
             >
-              {option}
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div className="flex justify-between items-center">
-        <span className="text-sm text-gray-600">
-          {currentQuestionIndex + 1} of {questions.length} Questions
-        </span>
-        <button
-          onClick={handleNextQuestion}
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-          disabled={selectedOption === null}
-        >
-          {currentQuestionIndex === questions.length - 1 ? <div>Submit</div> : <div>Next</div>}
-        </button>
-      </div>
+              {currentQuestion + 1 === questions[0].quiz.length ? "Submit" : "Next"}
+            </button>
+          </div>
+          <p className="text-center">
+            Question {currentQuestion + 1} of {questions[0].quiz.length}
+          </p>
+        </div>
+      )}
     </div>
   );
 };

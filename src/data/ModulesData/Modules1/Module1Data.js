@@ -3,12 +3,13 @@ import { quiz1 } from './quiz1';
 import { quiz2 } from './quiz2';
 import { quiz3 } from './quiz3';
 import { quiz4 } from './quiz4';
+import { topic1 } from './Topic';
 
 export const Module1 = [
   {
     topicNo:"topic1",
     title: "Overview of the Indian Taxation System",
-    content: "This1",
+    content: topic1,
     quiz: quiz1,
   },
   {

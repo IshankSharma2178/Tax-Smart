@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import ProfileDropDown from './ProfileDropDown'
 import { getCoins } from '../../Servies/operations/module'
 import { setCoins } from '../../slices/ModuleSlice'
+import Ruppe from "../../assets/img/rupee.png"
 
 function StaticNavbar({margin, width,height}) {
 
@@ -80,8 +81,13 @@ function StaticNavbar({margin, width,height}) {
               {
               token !== null &&
             <div className='w-auto text-right min-w-[180px]'>
-              <div className='flex items-end justify-end gap-4'>
-                <div>{coins}</div>
+              <div className='flex items-center justify-end gap-6 '>
+                <div className='flex flex-row gap-1'>
+                  <div className='w-[1.6rem]'>
+                    <img src={Ruppe}/>
+                  </div>
+                  {coins}
+                </div>
                 <ProfileDropDown />
               </div>
             </div>

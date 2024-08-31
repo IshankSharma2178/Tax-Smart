@@ -17,15 +17,15 @@ const TaxCalculator = () => {
   const calculateTax = (event) => {
     event.preventDefault();
     
-    const income = parseFloat(totalIncome);
-    const deductions = parseFloat(totalDeductions);
+    const income = parseFloat(totalIncome) || 0;
+    const deductions = parseFloat(totalDeductions) || 0;
     const taxableIncome = income - deductions;
     
     let calculatedOldTax = 0;
     let calculatedNewTax = 0;
 
     if (regime === 'old') {
-      calculatedOldTax = calculateOldRegimeTax(taxableIncome, age);
+      calculatedOldTax = calculateOldRegimeTax(taxableIncome);
       setOldRegimeTax(calculatedOldTax);
       setNewRegimeTax(0);
     } else {
@@ -36,34 +36,40 @@ const TaxCalculator = () => {
   };
 
   // Calculate tax for old regime
-  const calculateOldRegimeTax = (income, age) => {
+  const calculateOldRegimeTax = (income) => {
     let tax = 0;
-    const slabs = age === 'Below 60' ? [250000, 500000, 1000000]
-                 : age === '60-79' ? [300000, 500000, 1000000]
-                 : [500000, 1000000];
 
-    tax = computeTax(income, slabs, [0.05, 0.10, 0.20, 0.30]);
+    if (income <= 250000) {
+      tax = 0;
+    } else if (income <= 500000) {
+      tax = (income - 250000) * 0.05;
+    } else if (income <= 1000000) {
+      tax = (income - 500000) * 0.20 + 12500;
+    } else {
+      tax = (income - 1000000) * 0.30 + 112500;
+    }
+
     return tax;
   };
 
   // Calculate tax for new regime
   const calculateNewRegimeTax = (income) => {
-    const slabs = [250000, 500000, 750000, 1000000, 1250000, 1500000];
-    return computeTax(income, slabs, [0.05, 0.10, 0.15, 0.20, 0.25, 0.30]);
-  };
-
-  // Compute tax based on slabs
-  const computeTax = (income, slabs, rates) => {
     let tax = 0;
-    let prevSlab = 0;
 
-    for (let i = 0; i < slabs.length; i++) {
-      if (income > slabs[i]) {
-        tax += (Math.min(income, slabs[i+1] || income) - slabs[i]) * rates[i];
-      } else {
-        break;
-      }
-      prevSlab = slabs[i];
+    if (income <= 250000) {
+      tax = 0;
+    } else if (income <= 500000) {
+      tax = (income - 250000) * 0.05;
+    } else if (income <= 750000) {
+      tax = (income - 500000) * 0.10 + 12500;
+    } else if (income <= 1000000) {
+      tax = (income - 750000) * 0.15 + 37500;
+    } else if (income <= 1250000) {
+      tax = (income - 1000000) * 0.20 + 75000;
+    } else if (income <= 1500000) {
+      tax = (income - 1250000) * 0.25 + 125000;
+    } else {
+      tax = (income - 1500000) * 0.30 + 187500;
     }
 
     return tax;

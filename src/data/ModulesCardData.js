@@ -1,15 +1,18 @@
+import { Module1 } from './ModulesData/Modules1/Module1Data';
+import { Module2 } from './ModulesData/Modules2/Module2Data';
+
 export const ModulesCardData =[
     {
         ModuleName:"Introduction to Taxation",
         Description:"Unlock the essentials of India's Taxation System and discover the key differences between the Old and New tax regimes.",
         noOfModules:5,
-        link:"module1"
+        link:Module1
     },
     {
         ModuleName:"Taxation Topics",
         Description:"Master the key concepts of deductions, exemptions, and rebates across different tax regimes to optimize your tax savings.",
         noOfModules:4,
-        link:"module2"
+        link:Module2
 
     },
     {

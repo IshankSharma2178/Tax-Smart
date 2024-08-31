@@ -9,7 +9,7 @@ function Mentor() {
       <div className='max-w-[1360px] w-[95%] m-auto'>
         <StaticNavbar />
       </div>
-      <div className='w-11/12 max-w-[1260px] mx-auto'>
+      <div className='w-11/12 max-w-[1260px] mt-8 mx-auto'>
       <div className='flex flex-row flex-wrap  justify-between gap-y-16'>
         {
           MentorData.map((data,index)=>(

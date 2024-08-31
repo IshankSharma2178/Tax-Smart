@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from './Card';
 import blackBall from "../../../assets/img/shape/anim-2.png";
-import cross from "../../../assets/img/shape/anim-1.png";
+import reviewImg from "../../../assets/img/reviews.png";
 
 function ReviewSlider() {
   return (
@@ -33,8 +33,8 @@ function ReviewSlider() {
       </div>
       <div className="background1 relative">
         <div className="max-w-[1260px] w-11/12 mx-auto h-[900px] md:h-[550px]  relative pt-[4rem]">
-          <div className='absolute size-[2.75rem] left-4 transition-all top-6 scale-animation'>
-            <img src={cross} />
+          <div className='absolute size-[4.75rem] left-4 transition-all top-6 scale-animation'>
+            <img src={reviewImg} />
           </div>
           <div className="flex flex-col md:flex-row items-center md:pt-0 pt-[5rem] h-[100%] md:h-[80%] md:justify-between gap-12 md:gap-8">
             <div className= "w-[100%] md:w-[32%]">

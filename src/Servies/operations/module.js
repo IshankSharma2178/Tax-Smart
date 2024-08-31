@@ -54,6 +54,7 @@ export async function getUncompletedModules({email}){
         
         const response = await apiConnector("POST", GET_UNCOMPLETED_MODULE_API, {email});
         console.log("MARK_TOPIC_COMPLETED_API RESPONSE............", response)
+        return response.data.module;
 
     }catch(error){
         console.log("MARK_TOPIC_COMPLETED_API ERROR............", error)
